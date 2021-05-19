@@ -1,100 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link rel="stylesheet" href="../src/style.css">
-  <title>ToDo List</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="../src/style.css">
+    <title>ToDo List</title>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg darkblue">
-    <div class="container-fluid">
-      <a class="navbar-brand center text-white" href="#">
-        <img src="assets/to-do.svg" alt="to-do list icon">
-        To-do List
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg darkblue">
+        <div class="container-fluid">
+            <a class="navbar-brand center text-white" href="#">
+                <img src="assets/to-do.svg" alt="to-do list icon"> To-do List
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="">
           <img src="assets/hamburger.svg" alt="menu icon">
         </span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link addProject center fs-8 text-white" href="#">
-            <img src="assets/add-task.png" alt="add task icon" class="me-2"> Quick Add Task
-          </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link addProject center fs-8 text-white" href="#">
+                        <img src="assets/add-task.png" alt="add task icon" class="me-2"> Quick Add Task
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="container-fluid">
-    <div class="row homepage">
-      <section class="sidebar pt-4">
-        <ul class="wrap-sb pt-2 fw-light fs-6">
-          <li class="option center">
-            <a href="#" id="sidebarInbox"><img src="assets/inbox-solid.svg" alt="inbox icon" class="icons">Inbox</a>
-          </li>
-          <li class="option center">
-            <a href="#" id="sidebarToday"><img src="assets/calendar.svg" alt="inbox icon" class="icons">Today</a>
-          </li>
-          <li class="option center">
-            <a href="#" id="sidebarUpcoming"><img src="assets/upcoming.svg" alt="inbox icon" class="icons">Upcoming</a>   
-          </li>
-        </ul>
+    <div class="container-fluid">
+        <div class="row homepage">
+            <section class="sidebar pt-4">
+                <ul class="wrap-sb pt-2 fw-light fs-6">
+                    <li class="option center">
+                        <a href="#" id="sidebarInbox"><img src="assets/inbox-solid.svg" alt="inbox icon" class="icons">Inbox</a>
+                    </li>
+                    <li class="option center">
+                        <a href="#" id="sidebarToday"><img src="assets/calendar.svg" alt="inbox icon" class="icons">Today</a>
+                    </li>
+                    <li class="option center">
+                        <a href="#" id="sidebarUpcoming"><img src="assets/upcoming.svg" alt="inbox icon" class="icons">Upcoming</a>
+                    </li>
+                </ul>
 
-        <div class="accordion accordion-flush mt-3 drop-down" id="accordionFlush">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <div class="accordion accordion-flush mt-3 drop-down" id="accordionFlush">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                 Projects
               </button>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
-              <div class="accordion-body">
-                <ul class="fw-light fs-6">
-                  <li class="option center">
-                    <a href="#" id="defaultProject">
-                      <img src="assets/push-pin.svg" alt="inbox icon" class="project-icon">Default
-                    </a>
-                  </li>
-                  <li class="option center">
-                    <a href="#" id="customProject">
-                      <span class="project-name">Custom</span>
-                    </a>
-                  </li>
-                  <li class="option center">
-                    <a href="#" class="addProject">
-                      <img src="assets/plus.svg" alt="add new icon" class="project-icon">Add new project
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
+                            <div class="accordion-body">
+                                <ul class="fw-light fs-6" id="menu-items">
 
-      <section class="main-page">
-        <div class="mp-header center mt-3" id="tabTitle">Today</div>
-        <div class="mp-body">
-          <p class="fw-light center task">
-            <img src="assets/plus.svg" alt="add icon" class="me-3 plus"> Add task
-          </p>
-          <div class="actions center">
-            <div class="content" id="content"></div>
-            <button class="btn darkblue me-2 text-white saveBtn">Add task</button>
-            <a href="#" class="clear fw-light text-secondary" id="cancel">Cancel</a>
-          </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-page">
+                <div class="mp-header center mt-3" id="tabTitle">Today</div>
+                <div class="mp-body">
+                    <p class="fw-light center task">
+                        <img src="assets/plus.svg" alt="add icon" class="me-3 plus"> Add task
+                    </p>
+                    <div class="actions center">
+                        <div class="content" id="content"></div>
+                        <button class="btn darkblue me-2 text-white saveBtn">Add task</button>
+                        <a href="#" class="clear fw-light text-secondary" id="cancel">Cancel</a>
+                    </div>
+                </div>
+            </section>
         </div>
-      </section>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
