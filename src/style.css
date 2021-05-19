@@ -78,7 +78,8 @@ ul,
   border-radius: 50%;
 }
 
-.heading {
+.heading,
+.wrap-btns {
   justify-content: space-between;
 }
 
@@ -179,6 +180,10 @@ textarea {
   display: flex;
   justify-content: flex-end;
   padding: 0 0.8rem;
+}
+
+.w-48 {
+  width: 48%;
 }
 
 .clear:hover {

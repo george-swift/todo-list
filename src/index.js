@@ -2,22 +2,20 @@
 import { render, addProject, createPrompt } from './module/projectModule.js';
 import { newProjectField } from './module/domManager.js';
 
-const parentDiv = document.querySelector('.accordion-body');
-
 function init() {
-    const menuList = document.querySelector('#menu-items');
-    const defaultProject = render('Default', new Date().toLocaleString().split(',')[0]);
-    const prompt = createPrompt();
+  const menuList = document.querySelector('#menu-items');
+  const defaultProject = render('Default', new Date().toLocaleString().split(',')[0]);
+  const prompt = createPrompt();
 
-    menuList.append(defaultProject, prompt);
-    return menuList;
+  menuList.append(defaultProject, prompt);
+  return menuList;
 }
 
 function addNewProject() {
-    const prompt = createPrompt();
-    const menuList = document.querySelector('#menu-items');
-    const newProject = addProject('New');
-    menuList.insertBefore(newProject, prompt);
+  const prompt = createPrompt();
+  const menuList = document.querySelector('#menu-items');
+  const newProject = addProject('New');
+  menuList.insertBefore(newProject, prompt);
 }
 
 // const newProjectBtn = document.querySelector('#newProjectBtn');
@@ -30,4 +28,4 @@ function addNewProject() {
 // });
 
 init();
-//addNewProject();
+// addNewProject();
