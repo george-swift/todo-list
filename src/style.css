@@ -1,0 +1,205 @@
+.darkblue {
+  background-color: #34495e;
+}
+
+a,
+a:hover {
+  color: #34495e;
+  text-decoration: none;
+}
+
+.navbar {
+  padding: 0 1.5rem;
+}
+
+.navbar-brand {
+  font-size: 1.25em;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+.fs-8 {
+  font-size: 0.8rem;
+}
+
+.homepage {
+  min-height: 93vh;
+}
+
+.sidebar {
+  flex: 0 0 auto;
+  width: 20%;
+  background-color: #fafafa;
+}
+
+ul,
+.drop-down {
+  padding-left: 30px;
+  list-style: none;
+}
+
+.option {
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.2rem;
+  border-radius: 3px;
+  transition: background-color 0.5s ease-out;
+}
+
+.option:hover,
+.active {
+  background-color: #ececec;
+}
+
+.icons {
+  width: 25px;
+  height: 25px;
+  margin-right: 1rem;
+}
+
+.project-icon {
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.project-name::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 0.8rem;
+  background-color: #aaa;
+  border-radius: 50%;
+}
+
+.heading {
+  justify-content: space-between;
+}
+
+h5 {
+  margin-bottom: 0;
+}
+
+.drop-down ul {
+  padding: 0.5rem 0;
+}
+
+.accordion-button {
+  padding: 1rem 1.25rem 1rem 0.75rem;
+  font-weight: bold;
+}
+
+.accordion-body {
+  padding: 0.5rem;
+}
+
+.custom-btn {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.main-page {
+  flex: 0 0 auto;
+  width: 80%;
+}
+
+.mp-header {
+  min-height: 10%;
+}
+
+.mp-header,
+.mp-body {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.mp-body {
+  min-height: 85%;
+}
+
+.task:hover {
+  cursor: pointer;
+  font-weight: 350 !important;
+  color: #34495e;
+}
+
+.plus {
+  border-radius: 50%;
+}
+
+.task:hover .plus {
+  background-color: #ececec;
+}
+
+.editor,
+.editor.open {
+  min-height: 10rem;
+  padding: 0.3rem;
+}
+
+.editor,
+.close {
+  display: none;
+}
+
+.editor * {
+  font-size: 14px !important;
+}
+
+.editor.open {
+  display: block;
+}
+
+textarea {
+  height: 100px;
+}
+
+.datepicker {
+  padding-left: 0.8rem !important;
+}
+
+.dropdown {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.dropdown * {
+  font-weight: 300 !important;
+}
+
+.actions.open {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.8rem;
+}
+
+.clear:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar,
+  .main-page {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar,
+  ul,
+  .drop-down {
+    padding-left: 0.8rem;
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
+  }
+}
