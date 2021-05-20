@@ -1,83 +1,100 @@
-import { newProjectField } from './domManager.js';
+import { attributes } from './domManager.js';
 
-const render = (name) => {
-  const option = document.createElement('li');
-  const classes = ['option', 'center'];
-  option.classList.add(...classes);
+const createDefaultProject = (name) => {
+    const option = document.createElement('li');
+    const classes = ['option', 'center'];
+    option.classList.add(...classes);
 
-  const anchor = document.createElement('a');
-  anchor.href = '#';
+    const anchor = document.createElement('a');
+    anchor.href = '#';
 
-  const image = document.createElement('img');
-  image.src = 'assets/push-pin.svg';
-  image.className = 'project-icon';
+    const image = document.createElement('img');
+    image.src = 'assets/push-pin.svg';
+    image.className = 'project-icon';
 
-  const text = document.createElement('span');
-  text.textContent = name;
+    const text = document.createElement('span');
+    text.textContent = name;
 
-  anchor.appendChild(image);
-  anchor.appendChild(text);
-  option.appendChild(anchor);
+    anchor.appendChild(image);
+    anchor.appendChild(text);
+    option.appendChild(anchor);
 
-  return option;
+    return option;
 };
 
-const createPrompt = () => {
-  const option = document.createElement('li');
-  const classes = ['option', 'center'];
-  option.classList.add(...classes);
-
-  const anchor = document.createElement('a');
-  anchor.setAttribute('id', 'newProjectBtn');
-
-  const image = document.createElement('img');
-  image.src = 'assets/plus.svg';
-  image.className = 'project-icon';
-
-  const text = document.createElement('span');
-  text.textContent = 'Add new project';
-
-  anchor.addEventListener('click', (event) => {
-    const field = document.querySelector(`#${event.currentTarget.id}`);
-    field.classList.toggle('d-block');
-    field.classList.add('d-none');
-
-    const adjacentDiv = document.querySelector('#addProjectDiv');
-    adjacentDiv.classList.toggle('d-none');
-    adjacentDiv.classList.add('d-block');
-  });
-
-  const addProj = newProjectField();
-
-  anchor.appendChild(image);
-  anchor.appendChild(text);
-  option.appendChild(addProj);
-  option.appendChild(anchor);
-
-  return option;
+const customAttributes = (elem, attributes) => {
+    Object.entries(attributes).forEach(([key, value]) => {
+        elem.setAttribute(key, value);
+    });
 };
 
-const createItem = (project) => {
-  const option = document.createElement('li');
-  const classes = ['option', 'center'];
-  option.classList.add(...classes);
+const newProjectButton = () => {
+    const option = document.createElement('li');
+    const classes = ['option', 'center'];
+    option.classList.add(...classes);
 
-  const anchor = document.createElement('a');
-  anchor.href = '#';
-  anchor.classList.add('project-name');
+    const anchor = document.createElement('a');
+    anchor.setAttribute('id', 'newProjectBtn');
 
-  const text = document.createElement('span');
-  text.textContent = project;
+    const image = document.createElement('img');
+    image.src = 'assets/plus.svg';
+    image.className = 'project-icon';
 
-  anchor.appendChild(text);
-  option.appendChild(anchor);
+    const text = document.createElement('span');
+    text.textContent = 'Add new project';
 
-  return option;
+    anchor.append(image, text);
+
+    anchor.addEventListener('click', (event) => {
+        const field = document.querySelector(`#${event.currentTarget.id}`);
+        field.classList.toggle('d-block');
+        field.classList.add('d-none');
+
+        const adjacentDiv = document.querySelector('#addProjectForm');
+        adjacentDiv.classList.toggle('d-none');
+        adjacentDiv.classList.add('d-block');
+    });
+
+    const addProjectForm = document.createElement('div');
+    customAttributes(addProjectForm, attributes.div);
+
+    const input = document.createElement('div');
+    customAttributes(input, attributes.input);
+
+    const wrap = document.createElement('div');
+    customAttributes(wrap, attributes.wrap);
+
+    const add = document.createElement('button');
+    customAttributes(add, attributes.addBtn);
+
+    const cancel = document.createElement('button');
+    customAttributes(cancel, attributes.cancelBtn);
+
+    wrap.append(add, cancel);
+    addProjectForm.append(input, wrap);
+
+    option.append(anchor, addProjectForm);
+
+    return option;
+
 };
 
-const addProject = (project) => {
-  const elem = createItem(project);
-  return elem;
+const createProject = (project) => {
+    const option = document.createElement('li');
+    const classes = ['option', 'center'];
+    option.classList.add(...classes);
+
+    const anchor = document.createElement('a');
+    anchor.href = '#';
+    anchor.classList.add('project-name');
+
+    const text = document.createElement('span');
+    text.textContent = project;
+
+    anchor.appendChild(text);
+    option.appendChild(anchor);
+
+    return option;
 };
 
-export { render, addProject, createPrompt };
+export { createDefaultProject, newProjectButton, createProject };
