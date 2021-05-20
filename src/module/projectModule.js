@@ -58,7 +58,7 @@ const newProjectButton = () => {
     const addProjectForm = document.createElement('div');
     customAttributes(addProjectForm, attributes.div);
 
-    const input = document.createElement('div');
+    const input = document.createElement('input');
     customAttributes(input, attributes.input);
 
     const wrap = document.createElement('div');
@@ -66,9 +66,11 @@ const newProjectButton = () => {
 
     const add = document.createElement('button');
     customAttributes(add, attributes.addBtn);
+    add.textContent = 'Add';
 
     const cancel = document.createElement('button');
     customAttributes(cancel, attributes.cancelBtn);
+    cancel.textContent = 'Cancel';
 
     wrap.append(add, cancel);
     addProjectForm.append(input, wrap);
@@ -76,7 +78,6 @@ const newProjectButton = () => {
     option.append(anchor, addProjectForm);
 
     return option;
-
 };
 
 const createProject = (project) => {
