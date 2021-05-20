@@ -1,26 +1,4 @@
-import { attributes } from './domManager.js';
-
-const createDefaultProject = (name) => {
-    const option = document.createElement('li');
-    const classes = ['option', 'center'];
-    option.classList.add(...classes);
-
-    const anchor = document.createElement('a');
-    anchor.href = '#';
-
-    const image = document.createElement('img');
-    image.src = 'assets/push-pin.svg';
-    image.className = 'project-icon';
-
-    const text = document.createElement('span');
-    text.textContent = name;
-
-    anchor.appendChild(image);
-    anchor.appendChild(text);
-    option.appendChild(anchor);
-
-    return option;
-};
+import attributes from './domManager.js';
 
 const customAttributes = (elem, attributes) => {
     Object.entries(attributes).forEach(([key, value]) => {
@@ -28,31 +6,71 @@ const customAttributes = (elem, attributes) => {
     });
 };
 
-const newProjectButton = () => {
+const customLink = () => {
     const option = document.createElement('li');
-    const classes = ['option', 'center'];
-    option.classList.add(...classes);
+    customAttributes(option, attributes.li);
 
     const anchor = document.createElement('a');
-    anchor.setAttribute('id', 'newProjectBtn');
+    customAttributes(anchor, attributes.a.all);
 
-    const image = document.createElement('img');
-    image.src = 'assets/plus.svg';
-    image.className = 'project-icon';
+    const defaultIcon = document.createElement('img');
+    customAttributes(defaultIcon, attributes.icon.default);
+
+    const addNewIcon = document.createElement('img');
+    customAttributes(addNewIcon, attributes.icon.new);
 
     const text = document.createElement('span');
+
+    return {
+        option,
+        anchor,
+        defaultIcon,
+        addNewIcon,
+        text,
+    };
+};
+
+const superToggle = (elem, old, curr) => {
+    if (!elem.classList.contains(old)) return;
+    elem.classList.remove(old);
+    elem.classList.add(curr);
+};
+
+const createDefaultProject = (name) => {
+    const {
+        option,
+        anchor,
+        defaultIcon,
+        text,
+    } = customLink();
+
+    text.textContent = name;
+
+    anchor.append(defaultIcon, text);
+    option.appendChild(anchor);
+
+    return option;
+};
+
+const newProjectButton = () => {
+    const {
+        option,
+        anchor,
+        addNewIcon,
+        text,
+    } = customLink();
+
     text.textContent = 'Add new project';
 
-    anchor.append(image, text);
+    customAttributes(anchor, attributes.a.new);
+    anchor.append(addNewIcon, text);
 
     anchor.addEventListener('click', (event) => {
         const field = document.querySelector(`#${event.currentTarget.id}`);
-        field.classList.toggle('d-block');
         field.classList.add('d-none');
 
         const adjacentDiv = document.querySelector('#addProjectForm');
-        adjacentDiv.classList.toggle('d-none');
-        adjacentDiv.classList.add('d-block');
+        superToggle(adjacentDiv, 'd-none', 'd-block');
     });
 
     const addProjectForm = document.createElement('div');
@@ -81,15 +99,9 @@ const newProjectButton = () => {
 };
 
 const createProject = (project) => {
-    const option = document.createElement('li');
-    const classes = ['option', 'center'];
-    option.classList.add(...classes);
+    const { option, anchor, text } = customLink();
 
-    const anchor = document.createElement('a');
-    anchor.href = '#';
-    anchor.classList.add('project-name');
-
-    const text = document.createElement('span');
+    customAttributes(anchor, attributes.a.created);
     text.textContent = project;
 
     anchor.appendChild(text);
@@ -98,4 +110,9 @@ const createProject = (project) => {
     return option;
 };
 
-export { createDefaultProject, newProjectButton, createProject };
+export {
+    createDefaultProject,
+    newProjectButton,
+    createProject,
+    superToggle,
+};
