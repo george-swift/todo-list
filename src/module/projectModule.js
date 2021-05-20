@@ -30,12 +30,6 @@ const customLink = () => {
     };
 };
 
-const superToggle = (elem, old, curr) => {
-    if (!elem.classList.contains(old)) return;
-    elem.classList.remove(old);
-    elem.classList.add(curr);
-};
-
 const createDefaultProject = (name) => {
     const {
         option,
@@ -70,7 +64,9 @@ const newProjectButton = () => {
         field.classList.add('d-none');
 
         const adjacentDiv = document.querySelector('#addProjectForm');
-        superToggle(adjacentDiv, 'd-none', 'd-block');
+        if (!adjacentDiv.classList.contains('d-none')) return;
+        adjacentDiv.classList.remove('d-none');
+        adjacentDiv.classList.add('d-block');
     });
 
     const addProjectForm = document.createElement('div');
@@ -113,6 +109,5 @@ const createProject = (project) => {
 export {
     createDefaultProject,
     newProjectButton,
-    createProject,
-    superToggle,
+    createProject
 };
