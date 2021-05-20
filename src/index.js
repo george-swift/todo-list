@@ -25,4 +25,16 @@ document.addEventListener('click', (event) => {
             document.getElementById("projectName").value = '';
         }
     }
+
+    if (event.target.id === 'cancelBtn') {
+        document.getElementById("projectName").value = '';
+
+        const field = document.querySelector('#newProjectBtn');
+        field.classList.toggle('d-none');
+        field.classList.add('d-block');
+
+        const adjacentDiv = document.querySelector('#addProjectForm');
+        adjacentDiv.classList.toggle('d-block');
+        adjacentDiv.classList.add('d-none');
+    }
 });
