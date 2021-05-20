@@ -26,6 +26,12 @@ const customLink = () => {
   };
 };
 
+const superToggle = (elem, old, curr) => {
+  if (!elem.classList.contains(old)) return;
+  elem.classList.remove(old);
+  elem.classList.add(curr);
+};
+
 const createDefaultProject = (name) => {
   const {
     option, anchor, defaultIcon, text,
@@ -51,12 +57,10 @@ const newProjectButton = () => {
 
   anchor.addEventListener('click', (event) => {
     const field = document.querySelector(`#${event.currentTarget.id}`);
-    field.classList.toggle('d-block');
     field.classList.add('d-none');
 
     const adjacentDiv = document.querySelector('#addProjectForm');
-    adjacentDiv.classList.toggle('d-none');
-    adjacentDiv.classList.add('d-block');
+    superToggle(adjacentDiv, 'd-none', 'd-block');
   });
 
   const addProjectForm = document.createElement('div');
@@ -96,4 +100,6 @@ const createProject = (project) => {
   return option;
 };
 
-export { createDefaultProject, newProjectButton, createProject };
+export {
+  createDefaultProject, newProjectButton, createProject, superToggle,
+};

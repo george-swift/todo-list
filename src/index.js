@@ -1,4 +1,6 @@
-import { createDefaultProject, newProjectButton, createProject } from './module/projectModule.js';
+import {
+  createDefaultProject, newProjectButton, createProject, superToggle,
+} from './module/projectModule.js';
 
 const initialize = () => {
   const menuList = document.querySelector('#menu-items');
@@ -30,11 +32,9 @@ document.addEventListener('click', (event) => {
     document.getElementById('projectName').value = '';
 
     const field = document.querySelector('#newProjectBtn');
-    field.classList.toggle('d-none');
-    field.classList.add('d-block');
+    superToggle(field, 'd-none', 'd-block');
 
     const adjacentDiv = document.querySelector('#addProjectForm');
-    adjacentDiv.classList.toggle('d-block');
-    adjacentDiv.classList.add('d-none');
+    superToggle(adjacentDiv, 'd-block', 'd-none');
   }
 });
