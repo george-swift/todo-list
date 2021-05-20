@@ -13,8 +13,16 @@ const addNewBook = (name) => {
     const projectButtonDiv = document.querySelector('#newProjectBtn').parentNode;
     const parentDiv = document.querySelector("#menu-items")
 
-    parentDiv.insertBefore(createProject(name), projectButtonDiv)
+    parentDiv.insertBefore(createProject(name), projectButtonDiv);
 }
 
 initialize();
-addNewBook("Yusif");
+
+document.addEventListener('click', (event) => {
+    if (event.target.id === 'addProjectBtn') {
+        if (document.getElementById("projectName").value.trim().length > 4) {
+            addNewBook(document.getElementById("projectName").value);
+            document.getElementById("projectName").value = '';
+        }
+    }
+});
