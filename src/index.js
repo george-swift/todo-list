@@ -4,6 +4,10 @@ import {
     createProject,
 } from './module/projectModule.js';
 
+import {
+    createCard
+} from './module/todoModule.js';
+
 const initialize = () => {
     const menuList = document.querySelector('#menu-items');
     const defaultProject = createDefaultProject('Default');
@@ -27,6 +31,7 @@ const superToggle = (elem, old, curr) => {
 };
 
 initialize();
+createCard();
 
 $('.datepicker').datepicker({
     "format": "mm-dd-yy",
