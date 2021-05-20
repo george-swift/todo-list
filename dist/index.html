@@ -71,73 +71,7 @@
                         <img src="assets/plus.svg" alt="add icon" class="me-3 plus"> Add task
                     </p>
 
-                    <div class="overlay">
-                        <div class="overlay-inner px-4 py-5">
-                            <h3 class="text-center">Add a new task to your todo list</h3>
-                            <div class="editor">
-                                <input class="mb-3 form-control" id="task-title" type="text" placeholder="Title e.g., Subscription">
-                                <textarea class="mb-2 form-control" id="task-desc" placeholder="e.g., Renew gym membership on May 30th"></textarea>
-                                <div class="dropdown" id="due-date">
-                                    <button class="btn btn-outline-secondary me-2 dropdown-toggle" id="addDateToTask" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Schedule date
-                            </button>
-                                    <ul class="dropdown-menu" aria-labelledby="addDateToTask">
-                                        <li>
-                                            <input class="dropdown-item form-control w-75 datepicker mx-auto" id="selected-date" placeholder="Select date">
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown" id="project-name">
-                                    <button class="btn btn-outline-secondary me-2 dropdown-toggle" id="addToProject" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Add to project
-                            </button>
-                                    <ul class="dropdown-menu" aria-labelledby="addToProject">
-                                        <li>
-                                            <button class="project-name dropdown-item">Test</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown" id="priority-levels">
-                                    <button class="btn btn-outline-secondary me-2 dropdown-toggle" id="addPriority" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Set Priority
-                            </button>
-                                    <ul class="dropdown-menu" aria-labelledby="addPriority">
-                                        <li>
-                                            <button class="dropdown-item priority" type="button">
-                                  <img src="assets/priority-1.svg" alt="flag-icon" class="me-2">
-                                  <span>Priority 1</span>
-                                </button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item priority" type="button">
-                                  <img src="assets/priority-2.svg" alt="flag-icon" class="me-2">
-                                  <span>Priority 2</span>
-                                </button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item priority" type="button">
-                                  <img src="assets/priority-3.svg" alt="flag-icon" class="me-2">
-                                  <span>Priority 3</span>
-                                </button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item priority" type="button">
-                                  <img src="assets/priority-4.svg" alt="flag-icon" class="me-2">
-                                  <span>Priority 4</span>
-                                </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="actions center">
-                                <div class="content" id="content"></div>
-                                <button class="btn darkblue me-3 text-white saveBtn">Add task</button>
-                                <a href="#" class="clear fw-light text-secondary" id="cancel">Cancel</a>
-                            </div>
-                        </div>
-                    </div>
-
+                    <div id="card-container"></div>
                 </div>
             </section>
         </div>

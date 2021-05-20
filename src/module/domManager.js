@@ -46,8 +46,9 @@ const attributes = (() => ({
     },
 
     card: {
+        wrap: { class: 'card'},
         header: {
-            class: 'd-flex center justify-content-between',
+            class: 'card-header d-flex center justify-content-between',
         },
         title: {
             class: 'item-name',
@@ -60,7 +61,7 @@ const attributes = (() => ({
         },
         flag: {
             alt: 'priority level',
-            class: 'ms-2',
+            class: 'me-2',
         },
         body: {
             class: 'card-body',

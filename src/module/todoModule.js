@@ -1,55 +1,60 @@
 import attributes from './domManager.js';
 
 function Todo(title, description, dueDate, priority) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.priority = priority;
+  this.title = title;
+  this.description = description;
+  this.dueDate = dueDate;
+  this.priority = priority;
 }
 
 function defineAttributes(elem, attributes) {
-    Object.entries(attributes).forEach(([key, value]) => {
-        elem.setAttribute(key, value);
-    });
+  Object.entries(attributes).forEach(([key, value]) => {
+    elem.setAttribute(key, value);
+  });
 }
 
 function createCard(todo) {
-    const card = document.createElement('div');
+  const card = document.createElement('div');
+  defineAttributes(card, attributes.card.wrap);
 
-    const cardHeader = document.createElement('div');
-    defineAttributes(cardHeader, attributes.card.header);
+  const cardHeader = document.createElement('div');
+  defineAttributes(cardHeader, attributes.card.header);
 
-    const itemTitle = document.createElement('h5');
-    defineAttributes(itemTitle, attributes.card.title);
-    itemTitle.textContent = todo.title;
+  const itemTitle = document.createElement('h5');
+  defineAttributes(itemTitle, attributes.card.title);
 
-    const itemDetails = document.createElement('div');
-    defineAttributes(itemDetails, attributes.card.details);
+  const itemDetails = document.createElement('div');
+  defineAttributes(itemDetails, attributes.card.details);
 
-    const itemDate = document.createElement('p');
-    defineAttributes(itemDate, attributes.card.date);
-    itemDate.textContent = todo.dueDate; // which will be formatted first obviously
+  const itemDate = document.createElement('p');
+  defineAttributes(itemDate, attributes.card.date);
 
-    const itemPriority = document.createElement('img');
-    defineAttributes(itemPriority, attributes.card.flag);
-    itemPriority.setAttribute('src', `assets/priority-${todo.priority[-1]}.svg`);
+  const itemPriority = document.createElement('img');
+  defineAttributes(itemPriority, attributes.card.flag);
 
-    itemDetails.append(itemDate, itemPriority);
+  const cardBody = document.createElement('div');
+  defineAttributes(cardBody, attributes.card.body);
 
-    cardHeader.append(itemTitle, itemDetails);
+  const itemDescription = document.createElement('p');
+  defineAttributes(itemDescription, attributes.card.desc);
 
-    const cardBody = document.createElement('div');
-    defineAttributes(cardBody, attributes.card.body);
+    Object.entries(todo).forEach(([key, value]) => {
+        if (key === 'title') {
+        itemTitle.textContent = value;
+        } else if (key === 'description') {
+            itemDescription.textContent = value;
+        } else if (key === 'dueDate') {
+            itemDate.textContent = value;
+        } else if (key === 'priority') {
+            itemPriority.setAttribute('src', `assets/priority-${value[-1]}.svg`);
+        }
+        itemDetails.append(itemPriority, itemDate);
+        cardHeader.append(itemTitle, itemDetails);
+        cardBody.appendChild(itemDescription);
+        card.append(cardHeader, cardBody);
+  });
 
-    const itemDescription = document.createElement('p');
-    defineAttributes(itemDescription, attributes.card.desc);
-    itemDescription.textContent = todo.description;
-
-    cardBody.appendChild(itemDescription);
-
-    card.append(cardHeader, cardBody);
-
-    return card;
+  return card;
 }
 
 export { Todo, createCard };

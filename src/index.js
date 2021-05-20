@@ -31,7 +31,10 @@ const superToggle = (elem, old, curr) => {
 };
 
 initialize();
-createCard();
+
+document.querySelector('#card-container').appendChild(
+  createCard({ title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'priority 1' })
+);
 
 $('.datepicker').datepicker({
     "format": "mm-dd-yy",
