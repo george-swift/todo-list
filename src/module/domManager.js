@@ -44,6 +44,30 @@ const attributes = (() => ({
     id: 'cancelBtn',
     textContent: 'Cancel',
   },
+  card: {
+    header: {
+      class: 'd-flex center justify-content-between',
+    },
+    title: {
+      class: 'item-name',
+    },
+    details: {
+      class: 'item-details d-flex',
+    },
+    date: {
+      class: 'item-date mb-0',
+    },
+    flag: {
+      alt: 'priority level',
+      class: 'ms-2',
+    },
+    body: {
+      class: 'card-body',
+    },
+    desc: {
+      class: 'item-desc',
+    },
+  },
 }))();
 
 export default attributes;
