@@ -9,6 +9,7 @@ import {
 } from './module/todoModule.js';
 
 const initialize = (projects = [], todo = [{ title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'Low' }, { title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'Medium' }, { title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'High' }]) => {
+
     const menuList = document.querySelector('#menu-items');
     const defaultProject = createDefaultProject('Default');
     const newProjectBtn = newProjectButton();
@@ -52,9 +53,14 @@ document.addEventListener('click', (event) => {
         const adjacentDiv = document.querySelector('#addProjectForm');
         superToggle(adjacentDiv, 'd-block', 'd-none');
     }
-
-    if (event.target.matches('.task')) {
-        const overlay = document.querySelector('.overlay');
-        superToggle(overlay, 'd-none', 'open');
-    }
 });
+
+const addTaskButtons = document.getElementsByClassName("addProject");
+
+const displayAddTaskModal = () => {
+    $("#todoModal").modal('show');
+};
+
+for (var i = 0; i < addTaskButtons.length; i++) {
+    addTaskButtons[i].addEventListener('click', displayAddTaskModal, false);
+}
