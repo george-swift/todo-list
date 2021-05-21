@@ -66,7 +66,7 @@ document.getElementById('saveBtn').onclick = () => {
         title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
     );
 
-    saveNewToDo(todo);
+    if (Object.values(todo).every((input) => input.length > 2)) saveNewToDo(todo);
     resetFields(title, desc, projectName, priorityLevel, dueDate);
     $('#todoModal').modal('hide');
 };
