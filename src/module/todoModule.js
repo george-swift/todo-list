@@ -36,10 +36,6 @@ function createCards(todos) {
 
         const itemPriority = document.createElement('span');
         defineAttributes(itemPriority, attributes.card.badge[`${todos[i].priority.toLowerCase()}`]);
-        // <span class="badge badge-success">Success</span>
-
-        // const itemPriority = document.createElement('img');
-        // defineAttributes(itemPriority, attributes.card.flag);
 
         const cardBody = document.createElement('div');
         defineAttributes(cardBody, attributes.card.body);
