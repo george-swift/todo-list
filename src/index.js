@@ -2,6 +2,7 @@ import {
     createDefaultProject,
     newProjectButton,
     createProject,
+    wrapProject,
 } from './module/projectModule.js';
 
 import {
@@ -26,6 +27,13 @@ const addNewProject = (project) => {
     const parentDiv = document.querySelector('#menu-items');
 
     parentDiv.insertBefore(createProject(project), projectButtonDiv);
+    addToSelect(project);
+};
+
+const addToSelect = (project) => {
+  const select = document.querySelector('#todoProjectList');
+  const name = wrapProject(project);
+  select.appendChild(name);
 };
 
 const superToggle = (elem, old, curr) => {

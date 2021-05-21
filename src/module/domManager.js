@@ -51,7 +51,7 @@ const attributes = (() => ({
       class: 'card-header d-flex center justify-content-between',
     },
     title: {
-      class: 'item-name fw-bold',
+      class: 'item-name',
     },
     details: {
       class: 'item-details d-flex flex-wrap',
@@ -67,7 +67,7 @@ const attributes = (() => ({
       class: 'card-body',
     },
     desc: {
-      class: 'item-desc fw-lighter',
+      class: 'item-desc fw-light',
     },
     badge: {
       high: {

@@ -106,8 +106,16 @@ const createProject = (project) => {
   return option;
 };
 
+const wrapProject = (project) => {
+  const option = document.createElement('option');
+  option.textContent = project;
+
+  return option;
+};
+
 export {
   createDefaultProject,
   newProjectButton,
   createProject,
+  wrapProject,
 };
