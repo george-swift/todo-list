@@ -5,27 +5,26 @@ import {
 } from './module/projectModule.js';
 
 import {
-    createCard
+    createCards
 } from './module/todoModule.js';
 
-const initialize = () => {
+const initialize = (projects = [], todo = []) => {
     const menuList = document.querySelector('#menu-items');
     const defaultProject = createDefaultProject('Default');
     const newProjectBtn = newProjectButton();
-
     menuList.append(defaultProject, newProjectBtn);
 
-    const todo = { title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'priority 1' };
-    const cardContainer = document.querySelector('#card-container');
+    projects.forEach(project => addNewProject(project));
 
-    cardContainer.appendChild(createCard(todo));
+    const mpBody = document.querySelector('#mp-body');
+    mpBody.appendChild(createCards(todo));
 };
 
-const addNewProject = (name) => {
+const addNewProject = (project) => {
     const projectButtonDiv = document.querySelector('#newProjectBtn').parentNode;
     const parentDiv = document.querySelector('#menu-items');
 
-    parentDiv.insertBefore(createProject(name), projectButtonDiv);
+    parentDiv.insertBefore(createProject(project), projectButtonDiv);
 };
 
 const superToggle = (elem, old, curr) => {
@@ -35,17 +34,6 @@ const superToggle = (elem, old, curr) => {
 };
 
 initialize();
-
-// document.querySelector('#card-container').appendChild(
-//     createCard({ title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'priority 1' })
-// );
-
-$('.datepicker').datepicker({
-    "format": "mm-dd-yy",
-    "todayHighlight": true,
-    "autoclose": true,
-    "keyboardNavigation": false
-});
 
 document.addEventListener('click', (event) => {
     if (event.target.id === 'addProjectBtn') {
