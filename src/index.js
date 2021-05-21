@@ -8,7 +8,7 @@ import {
     createCards
 } from './module/todoModule.js';
 
-const initialize = (projects = [], todo = []) => {
+const initialize = (projects = [], todo = [{ title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'Low' }, { title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'Medium' }, { title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'High' }]) => {
     const menuList = document.querySelector('#menu-items');
     const defaultProject = createDefaultProject('Default');
     const newProjectBtn = newProjectButton();

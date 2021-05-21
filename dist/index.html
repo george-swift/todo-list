@@ -71,17 +71,18 @@
                         <img src="assets/plus.svg" alt="add icon" class="me-3 plus"> Add task
                     </p>
 
+                    <div id="card-container"></div>
                 </div>
             </section>
         </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Todo</h5>
+                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Add Todo</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -92,10 +93,7 @@
                             <label class="fw-bold" for="exampleInputEmail1">Title</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-bold" for="exampleFormControlTextarea1">Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                        </div>
+
                         <div class="form-group mb-3 col-12 col-sm-6">
                             <label class="fw-bold" for="exampleFormControlSelect1">Project</label>
                             <select class="form-control" id="exampleFormControlSelect1">
@@ -117,11 +115,15 @@
                             <label class="fw-bold" for="datepicker">Date</label>
                             <input type="date" class="form-control" id="datepicker" class="datepicker" aria-describedby="dateHelp">
                         </div>
+                        <div class="form-group mb-3">
+                            <label class="fw-bold" for="exampleFormControlTextarea1">Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn darkblue text-white">Save changes</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn darkblue text-white btn-sm">Save changes</button>
                 </div>
             </div>
         </div>

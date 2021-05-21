@@ -46,12 +46,12 @@ const attributes = (() => ({
     },
 
     card: {
-        wrap: { class: 'card'},
+        wrap: { class: 'card my-3' },
         header: {
             class: 'card-header d-flex center justify-content-between',
         },
         title: {
-            class: 'item-name',
+            class: 'item-name font-weight-600',
         },
         details: {
             class: 'item-details d-flex',
@@ -69,7 +69,17 @@ const attributes = (() => ({
         desc: {
             class: 'item-desc',
         },
-
+        badge: {
+            high: {
+                class: 'badge btn-danger mx-3'
+            },
+            medium: {
+                class: 'badge btn-success mx-3'
+            },
+            low: {
+                class: 'badge btn-info mx-3'
+            }
+        }
     },
 }))();
 

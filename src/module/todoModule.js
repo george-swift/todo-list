@@ -34,8 +34,12 @@ function createCards(todos) {
         const itemDate = document.createElement('p');
         defineAttributes(itemDate, attributes.card.date);
 
-        const itemPriority = document.createElement('img');
-        defineAttributes(itemPriority, attributes.card.flag);
+        const itemPriority = document.createElement('span');
+        defineAttributes(itemPriority, attributes.card.badge[`${todos[i].priority.toLowerCase()}`]);
+        // <span class="badge badge-success">Success</span>
+
+        // const itemPriority = document.createElement('img');
+        // defineAttributes(itemPriority, attributes.card.flag);
 
         const cardBody = document.createElement('div');
         defineAttributes(cardBody, attributes.card.body);
@@ -51,7 +55,7 @@ function createCards(todos) {
             } else if (key === 'dueDate') {
                 itemDate.textContent = value;
             } else if (key === 'priority') {
-                itemPriority.setAttribute('src', `assets/${value}.svg`);
+                itemPriority.textContent = value;
             }
         });
 

@@ -1,267 +1,266 @@
-@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
-
-/* body {
-  font-family: 'Julius Sans One', sans-serif;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+body {
+    font-family: 'Work Sans', sans-serif;
+}
 
 .darkblue {
-  background-color: #34495e;
+    background-color: #34495e;
 }
 
 a,
 a:hover {
-  color: #34495e;
-  text-decoration: none;
+    color: #34495e;
+    text-decoration: none;
 }
 
 .navbar {
-  padding: 0 1.5rem;
+    padding: 0 1.5rem;
 }
 
 .navbar-brand {
-  font-size: 1.25em;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  font-weight: bold;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
 }
 
 .center {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .fs-8 {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 .homepage {
-  min-height: 93vh;
+    min-height: 93vh;
 }
 
 .sidebar {
-  flex: 0 0 auto;
-  width: 20%;
-  background-color: #fafafa;
+    flex: 0 0 auto;
+    width: 20%;
+    background-color: #fafafa;
 }
 
 ul,
 .drop-down {
-  padding-left: 30px;
-  list-style: none;
+    padding-left: 30px;
+    list-style: none;
 }
 
 .option {
-  padding: 0.3rem 0.5rem;
-  margin-bottom: 0.2rem;
-  border-radius: 3px;
-  transition: background-color 0.5s ease-out;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.2rem;
+    border-radius: 3px;
+    transition: background-color 0.5s ease-out;
 }
 
 .option:hover,
 .active {
-  background-color: #ececec;
+    background-color: #ececec;
 }
 
 .icons {
-  width: 25px;
-  height: 25px;
-  margin-right: 1rem;
+    width: 25px;
+    height: 25px;
+    margin-right: 1rem;
 }
 
 .project-icon {
-  margin-right: 0.5rem;
-  width: 16px;
-  height: 16px;
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
 }
 
 .project-name::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 0.8rem;
-  background-color: #aaa;
-  border-radius: 50%;
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 0.8rem;
+    background-color: #aaa;
+    border-radius: 50%;
 }
 
 .heading,
 .wrap-btns {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 
 h5 {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .drop-down ul {
-  padding: 0.5rem 0;
+    padding: 0.5rem 0;
 }
 
 .accordion-button {
-  padding: 1rem 1.25rem 1rem 0.75rem;
-  font-weight: bold;
+    padding: 1rem 1.25rem 1rem 0.75rem;
+    font-weight: bold;
 }
 
 .accordion-body {
-  padding: 0.5rem;
+    padding: 0.5rem;
 }
 
 .custom-btn {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
 }
 
 .main-page {
-  flex: 0 0 auto;
-  width: 80%;
+    flex: 0 0 auto;
+    width: 80%;
 }
 
 .mp-header {
-  min-height: 10%;
+    min-height: 10%;
 }
 
 .mp-header,
 .mp-body {
-  width: 75%;
-  margin: 0 auto;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .mp-body {
-  min-height: 85%;
+    min-height: 85%;
 }
 
 .task:hover {
-  cursor: pointer;
-  font-weight: 350 !important;
-  color: #34495e;
+    cursor: pointer;
+    font-weight: 350 !important;
+    color: #34495e;
 }
 
 .plus {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 .task:hover .plus {
-  background-color: #ececec;
+    background-color: #ececec;
 }
 
 .overlay {
-  position: fixed;
-  background: rgba(0, 0, 0, 0.7);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: none;
-  z-index: 2;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    z-index: 2;
 }
 
 .overlay.open {
-  display: grid;
-  align-items: center;
-  justify-items: center;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 
 .overlay-inner {
-  position: relative;
-  top: 1%;
-  width: 50vw;
-  background: #f5f5f5;
-  border-radius: 20px;
-  box-shadow: 0 34px 104px rgba(250, 250, 250, 0.25);
+    position: relative;
+    top: 1%;
+    width: 50vw;
+    background: #f5f5f5;
+    border-radius: 20px;
+    box-shadow: 0 34px 104px rgba(250, 250, 250, 0.25);
 }
 
 .editor,
 .editor.open {
-  min-height: 10rem;
-  padding: 0.3rem;
+    min-height: 10rem;
+    padding: 0.3rem;
 }
 
 .close {
-  display: none;
+    background: none;
+    border: none;
+    color: floralwhite;
+    font-weight: bold;
+    background: black;
+    border-radius: 10%;
 }
 
 .editor * {
-  font-size: 14px !important;
+    font-size: 14px !important;
 }
 
 textarea {
-  height: 100px;
+    height: 100px;
 }
 
 .datepicker {
-  padding-left: 0.8rem !important;
+    padding-left: 0.8rem !important;
 }
 
 .dropdown {
-  display: inline-block;
-  margin-top: 0.5rem;
+    display: inline-block;
+    margin-top: 0.5rem;
 }
 
 .dropdown * {
-  font-weight: 300 !important;
+    font-weight: 300 !important;
 }
 
 .actions {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0.8rem;
 }
 
 .wrapper {
-  padding: 0.5rem;
-  width: 100%;
+    padding: 0.5rem;
+    width: 100%;
 }
 
 .w-48 {
-  width: 48%;
+    width: 48%;
 }
 
 .clear:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 1200px) {
-  .sidebar {
-    width: 35%;
-  }
-
-  .main-page {
-    width: 65%;
-  }
-
-  ul,
-  .drop-down {
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .wrapper {
-    padding: 0.75rem 0;
-  }
+    .sidebar {
+        width: 35%;
+    }
+    .main-page {
+        width: 65%;
+    }
+    ul,
+    .drop-down {
+        padding-left: 0;
+        list-style: none;
+    }
+    .wrapper {
+        padding: 0.75rem 0;
+    }
 }
 
 @media screen and (max-width: 768px) {
-  .sidebar,
-  .main-page {
-    width: 100%;
-  }
-
-  .navbar-nav {
-    align-items: flex-end;
-  }
+    .sidebar,
+    .main-page {
+        width: 100%;
+    }
+    .navbar-nav {
+        align-items: flex-end;
+    }
 }
 
 @media screen and (max-width: 400px) {
-  .sidebar,
-  .main-page {
-    padding-left: 0;
-  }
-
-  .navbar,
-  ul,
-  .drop-down {
-    padding-left: 0.8rem;
-  }
+    .sidebar,
+    .main-page {
+        padding-left: 0;
+    }
+    .navbar,
+    ul,
+    .drop-down {
+        padding-left: 0.8rem;
+    }
 }
