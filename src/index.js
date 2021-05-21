@@ -11,10 +11,14 @@ import {
 const initialize = () => {
     const menuList = document.querySelector('#menu-items');
     const defaultProject = createDefaultProject('Default');
-    const newProjectBtn = newProjectButton('New');
+    const newProjectBtn = newProjectButton();
 
     menuList.append(defaultProject, newProjectBtn);
-    return menuList;
+
+    const todo = { title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'priority 1' };
+    const cardContainer = document.querySelector('#card-container');
+
+    cardContainer.appendChild(createCard(todo));
 };
 
 const addNewProject = (name) => {
@@ -32,9 +36,9 @@ const superToggle = (elem, old, curr) => {
 
 initialize();
 
-document.querySelector('#card-container').appendChild(
-  createCard({ title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'priority 1' })
-);
+// document.querySelector('#card-container').appendChild(
+//     createCard({ title: 'New Todo', dueDate: 'Fri May 21', description: 'Testing Card', priority: 'priority 1' })
+// );
 
 $('.datepicker').datepicker({
     "format": "mm-dd-yy",
@@ -42,7 +46,6 @@ $('.datepicker').datepicker({
     "autoclose": true,
     "keyboardNavigation": false
 });
-
 
 document.addEventListener('click', (event) => {
     if (event.target.id === 'addProjectBtn') {
