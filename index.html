@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg darkblue">
         <div class="container-fluid">
-            <a class="navbar-brand center text-white" href="#">
+            <a class="navbar-brand center text-white" href="#" id="app-name">
                 <img src="assets/to-do.svg" alt="to-do list icon"> To-do List
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,9 @@
       </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link addProject center fs-8 text-white" href="#">
-                        <img src="assets/add-task.png" alt="add task icon" class="me-2"> Quick Add Task
-                    </a>
+                  <a class="nav-link addProject center fs-8 text-white" href="#todoModal" data-bs-toggle="modal">
+                    <img src="assets/add-task.png" alt="add task icon" class="me-2"> Quick Add Task
+                  </a>
                 </div>
             </div>
         </div>
@@ -65,11 +65,15 @@
             </section>
 
             <section class="main-page">
-                <div class="mp-header center mt-3" id="tabTitle">Today</div>
+                <div class="mp-header font-custom fs-4 center mt-3" id="tabTitle">Today</div>
                 <div class="mp-body" id="mp-body">
-                    <p class="fw-light center task addProject">
+                    <!-- <p class="fw-light center task addProject">
                         <img src="assets/plus.svg" alt="add icon" class="me-3 plus"> Add task
-                    </p>
+                    </p> -->
+
+                    <button class="btn fw-light task" type="button" data-bs-toggle="modal" data-bs-target="#todoModal">
+                      Add task
+                    </button>
 
                     <div id="card-container"></div>
                 </div>
@@ -78,52 +82,54 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="todoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-bold" id="exampleModalLabel">Add Todo</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                    <h5 class="modal-title font-custom fw-bold" id="todoModalLabel">Create your to-do list</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="row">
-                        <div class="form-group mb-3">
-                            <label class="fw-bold" for="exampleInputEmail1">Title</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <form class="row px-3">
+                       
+                        <div class="form-floating mb-3 px-0">
+                          <input type="text" class="form-control" id="todoTitle" aria-describedby="toDoTitle" placeholder="e.g., Subscriptions">
+                          <label class="font-custom" for="todoTitle">Title</label>
                         </div>
 
-                        <div class="form-group mb-3 col-12 col-sm-6">
-                            <label class="fw-bold" for="exampleFormControlSelect1">Project</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option selected>Choose Project</option>
-                              <option>Default</option>
-                            </select>
+                        <div class="form-floating mb-3 col-md px-0 me-1 font-custom">
+                          <input class="form-control" list="datalistOptions" id="todoProjectList" placeholder="Search project name...">
+                          <label for="todoProjectList" class="form-label">Project</label>
+                          <datalist id="datalistOptions">
+                            <option value="Default">
+                            <option value="New Project">
+                          </datalist>
                         </div>
-                        <div class="form-group mb-3 col-12 col-sm-6">
-                            <label class="fw-bold" for="exampleFormControlSelect1">Priority</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option selected>Choose Priority</option>
-                              <option>Priority 1</option>
-                              <option>Priority 2</option>
-                              <option>Priority 3</option>
-                              <option>Priority 4</option>
-                            </select>
+
+                        <div class="form-floating mb-3 col-md px-0 font-custom">
+                          <select class="form-control font-custom fw-normal" id="todoPriorities">
+                            <option selected>Select Priority</option>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                          </select>
+                          <label for="todoPriorities">Priority</label>
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-bold" for="datepicker">Date</label>
-                            <input type="date" class="form-control" id="datepicker" class="datepicker" aria-describedby="dateHelp">
+
+                        <div class="input-group flex-nowrap mb-3 px-0">
+                          <span class="input-group-text font-custom" id="addon-wrapping">Date</span>
+                          <input type="date" class="form-control datepicker" id="datepicker" aria-describedby="dateHelp">
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="fw-bold" for="exampleFormControlTextarea1">Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+
+                        <div class="form-floating mb-3 px-0">
+                          <textarea class="form-control desc-td" id="todoDesc" placeholder="e.g., Renew gym membership on May 30th"></textarea>
+                          <label class="font-custom" for="todoDesc">Description</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn darkblue text-white btn-sm">Save changes</button>
+                    <button type="button" class="btn btn-outline-secondary font-custom" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn darkblue text-white font-custom" id="saveBtn">Save changes</button>
                 </div>
             </div>
         </div>
