@@ -14,17 +14,17 @@
     <nav class="navbar navbar-expand-lg darkblue">
         <div class="container-fluid">
             <a class="navbar-brand center text-white" href="#" id="app-name">
-                <img src="assets/to-do.svg" alt="to-do list icon"> To-do List
+                <img src="../src/assets/to-do.svg" alt="to-do list icon"> To-do List
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="">
-          <img src="assets/hamburger.svg" alt="menu icon">
+          <img src="../src/assets/hamburger.svg" alt="menu icon">
         </span>
       </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link addProject center fs-8 text-white" href="#todoModal" data-bs-toggle="modal">
-                        <img src="assets/add-task.png" alt="add task icon" class="me-2"> Quick Add Task
+                        <img src="../src/assets/add-task.png" alt="add task icon" class="me-2"> Quick Add Task
                     </a>
                 </div>
             </div>
@@ -36,13 +36,13 @@
             <section class="sidebar pt-4">
                 <ul class="wrap-sb pt-2 fs-6">
                     <li class="option center">
-                        <a href="#" id="sidebarInbox"><img src="assets/inbox-solid.svg" alt="inbox icon" class="icons">Inbox</a>
+                        <a href="#" id="sidebarInbox"><img src="../src/assets/inbox-solid.svg" alt="inbox icon" class="icons">Inbox</a>
                     </li>
                     <li class="option center">
-                        <a href="#" id="sidebarToday"><img src="assets/calendar.svg" alt="inbox icon" class="icons">Today</a>
+                        <a href="#" id="sidebarToday"><img src="../src/assets/calendar.svg" alt="inbox icon" class="icons">Today</a>
                     </li>
                     <li class="option center">
-                        <a href="#" id="sidebarUpcoming"><img src="assets/upcoming.svg" alt="inbox icon" class="icons">Upcoming</a>
+                        <a href="#" id="sidebarUpcoming"><img src="../src/assets/upcoming.svg" alt="inbox icon" class="icons">Upcoming</a>
                     </li>
                 </ul>
 
@@ -87,14 +87,14 @@
 
                         <div class="form-floating mb-3 px-0">
                             <input type="text" class="form-control" id="todoTitle" aria-describedby="toDoTitle" placeholder="e.g., Subscriptions">
-                            <label class="font-custom" for="todoTitle">Title</label>
+                            <label class="font-custom fw-normal" for="todoTitle">Title</label>
                         </div>
 
                         <div class="form-floating mb-3 col-md px-0 me-1 font-custom">
                             <select class="form-control font-custom fw-normal" id="todoProjectList">
                               <option value="Default" selected>Select Project</option>
                             </select>
-                            <label for="todoProjectList">Project</label>
+                            <label for="todoProjectList" class="fw-normal">Project</label>
                         </div>
 
                         <div class="form-floating mb-3 col-md px-0 font-custom">
@@ -104,23 +104,23 @@
                               <option>Medium</option>
                               <option>High</option>
                             </select>
-                            <label for="todoPriorities">Priority</label>
+                            <label for="todoPriorities" class="fw-normal">Priority</label>
                         </div>
 
                         <div class="input-group flex-nowrap mb-3 px-0">
-                            <span class="input-group-text font-custom" id="addon-wrapping">Date</span>
+                            <span class="input-group-text font-custom fw-normal" id="addon-wrapping">Date</span>
                             <input type="date" class="form-control datepicker" id="datepicker" aria-describedby="dateHelp">
                         </div>
 
                         <div class="form-floating mb-3 px-0">
                             <textarea class="form-control desc-td" id="todoDesc" placeholder="e.g., Renew gym membership on May 30th"></textarea>
-                            <label class="font-custom" for="todoDesc">Description</label>
+                            <label class="font-custom fw-normal" for="todoDesc">Description</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary font-custom" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn darkblue text-white font-custom" id="saveBtn">Save changes</button>
+                    <button type="button" class="btn btn-outline-secondary font-custom fw-normal" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn darkblue text-white font-custom fw-normal" id="saveBtn">Save changes</button>
                 </div>
             </div>
         </div>
