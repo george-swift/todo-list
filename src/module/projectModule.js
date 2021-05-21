@@ -1,124 +1,124 @@
 import attributes from './domManager.js';
 
 const customAttributes = (elem, attributes) => {
-    Object.entries(attributes).forEach(([key, value]) => {
-        elem.setAttribute(key, value);
-    });
+  Object.entries(attributes).forEach(([key, value]) => {
+    elem.setAttribute(key, value);
+  });
 };
 
 const customLink = () => {
-    const option = document.createElement('li');
-    customAttributes(option, attributes.li);
+  const option = document.createElement('li');
+  customAttributes(option, attributes.li);
 
-    const anchor = document.createElement('a');
-    customAttributes(anchor, attributes.a.all);
+  const anchor = document.createElement('a');
+  customAttributes(anchor, attributes.a.all);
 
-    const defaultIcon = document.createElement('img');
-    customAttributes(defaultIcon, attributes.icon.default);
+  const defaultIcon = document.createElement('img');
+  customAttributes(defaultIcon, attributes.icon.default);
 
-    const addNewIcon = document.createElement('img');
-    customAttributes(addNewIcon, attributes.icon.new);
+  const addNewIcon = document.createElement('img');
+  customAttributes(addNewIcon, attributes.icon.new);
 
-    const text = document.createElement('span');
+  const text = document.createElement('span');
 
-    return {
-        option,
-        anchor,
-        defaultIcon,
-        addNewIcon,
-        text,
-    };
+  return {
+    option,
+    anchor,
+    defaultIcon,
+    addNewIcon,
+    text,
+  };
 };
 
 const createDefaultProject = (name) => {
-    const {
-        option,
-        anchor,
-        defaultIcon,
-        text,
-    } = customLink();
+  const {
+    option,
+    anchor,
+    defaultIcon,
+    text,
+  } = customLink();
 
-    text.textContent = name;
-    text.id = 'pr-default';
+  text.textContent = name;
+  text.id = 'pr-default';
 
-    anchor.append(defaultIcon, text);
-    anchor.className = 'project-name-default';
-    option.appendChild(anchor);
+  anchor.append(defaultIcon, text);
+  anchor.className = 'project-name-default';
+  option.appendChild(anchor);
 
-    return option;
+  return option;
 };
 
 const newProjectButton = () => {
-    const {
-        option,
-        anchor,
-        addNewIcon,
-        text,
-    } = customLink();
+  const {
+    option,
+    anchor,
+    addNewIcon,
+    text,
+  } = customLink();
 
-    text.textContent = 'Add new project';
+  text.textContent = 'Add new project';
 
-    customAttributes(anchor, attributes.a.new);
-    anchor.append(addNewIcon, text);
+  customAttributes(anchor, attributes.a.new);
+  anchor.append(addNewIcon, text);
 
-    anchor.addEventListener('click', (event) => {
-        const field = document.querySelector(`#${event.currentTarget.id}`);
-        field.classList.add('d-none');
+  anchor.addEventListener('click', (event) => {
+    const field = document.querySelector(`#${event.currentTarget.id}`);
+    field.classList.add('d-none');
 
-        const adjacentDiv = document.querySelector('#addProjectForm');
-        if (!adjacentDiv.classList.contains('d-none')) return;
-        adjacentDiv.classList.remove('d-none');
-        adjacentDiv.classList.add('d-block');
-    });
+    const adjacentDiv = document.querySelector('#addProjectForm');
+    if (!adjacentDiv.classList.contains('d-none')) return;
+    adjacentDiv.classList.remove('d-none');
+    adjacentDiv.classList.add('d-block');
+  });
 
-    const addProjectForm = document.createElement('div');
-    customAttributes(addProjectForm, attributes.div);
+  const addProjectForm = document.createElement('div');
+  customAttributes(addProjectForm, attributes.div);
 
-    const input = document.createElement('input');
-    customAttributes(input, attributes.input);
+  const input = document.createElement('input');
+  customAttributes(input, attributes.input);
 
-    const wrap = document.createElement('div');
-    customAttributes(wrap, attributes.wrap);
+  const wrap = document.createElement('div');
+  customAttributes(wrap, attributes.wrap);
 
-    const add = document.createElement('button');
-    customAttributes(add, attributes.addBtn);
-    add.textContent = 'Add';
+  const add = document.createElement('button');
+  customAttributes(add, attributes.addBtn);
+  add.textContent = 'Add';
 
-    const cancel = document.createElement('button');
-    customAttributes(cancel, attributes.cancelBtn);
-    cancel.textContent = 'Cancel';
+  const cancel = document.createElement('button');
+  customAttributes(cancel, attributes.cancelBtn);
+  cancel.textContent = 'Cancel';
 
-    wrap.append(add, cancel);
-    addProjectForm.append(input, wrap);
+  wrap.append(add, cancel);
+  addProjectForm.append(input, wrap);
 
-    option.append(anchor, addProjectForm);
+  option.append(anchor, addProjectForm);
 
-    return option;
+  return option;
 };
 
 const createProject = (project) => {
-    const { option, anchor, text } = customLink();
+  const { option, anchor, text } = customLink();
 
-    customAttributes(anchor, attributes.a.created);
-    text.textContent = project;
-    text.id = `pr-${project.toLowerCase()}`;
+  customAttributes(anchor, attributes.a.created);
+  text.textContent = project;
+  text.id = `pr-${project.toLowerCase()}`;
 
-    anchor.appendChild(text);
-    option.appendChild(anchor);
+  anchor.appendChild(text);
+  option.appendChild(anchor);
 
-    return option;
+  return option;
 };
 
 const wrapProject = (project) => {
-    const option = document.createElement('option');
-    option.textContent = project;
+  const option = document.createElement('option');
+  option.textContent = project;
 
-    return option;
+  return option;
 };
 
 export {
-    createDefaultProject,
-    newProjectButton,
-    createProject,
-    wrapProject,
+  createDefaultProject,
+  newProjectButton,
+  createProject,
+  wrapProject,
 };

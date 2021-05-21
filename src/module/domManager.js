@@ -17,11 +17,11 @@ const attributes = (() => ({
   icon: {
     default: {
       class: 'project-icon',
-      src: 'assets/push-pin.svg',
+      src: '../src/assets/push-pin.svg',
     },
     new: {
       class: 'project-icon',
-      src: 'assets/plus.svg',
+      src: '../src/assets/plus.svg',
     },
   },
 
@@ -46,7 +46,7 @@ const attributes = (() => ({
   },
 
   card: {
-    wrap: { class: 'card mt-3 font-custom' },
+    wrap: { class: 'card mt-3' },
     header: {
       class: 'card-header d-flex center justify-content-between',
     },
@@ -57,7 +57,7 @@ const attributes = (() => ({
       class: 'item-details d-flex flex-wrap',
     },
     date: {
-      class: 'item-date mb-0 fw-light',
+      class: 'item-date mb-0',
     },
     flag: {
       alt: 'priority level',
@@ -67,7 +67,7 @@ const attributes = (() => ({
       class: 'card-body',
     },
     desc: {
-      class: 'item-desc fw-light',
+      class: 'item-desc',
     },
     badge: {
       high: {
