@@ -1,10 +1,11 @@
 import attributes from './domManager.js';
 
-function Todo(title, description, dueDate, priority) {
+function Todo(title, description, dueDate, priority, project) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.projectName = project;
 }
 
 function defineAttributes(elem, attributes) {
