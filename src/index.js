@@ -9,7 +9,7 @@ import {
     Todo,
 } from './module/todoModule.js';
 
-const initialize = (projects = [], todos = JSON.parse(localStorage.getItem('todo-collection')) ? JSON.parse(localStorage.getItem('todo-collection')) : []) => {
+const initialize = (projects = JSON.parse(localStorage.getItem('project-collection')) ? JSON.parse(localStorage.getItem('project-collection')) : [], todos = JSON.parse(localStorage.getItem('todo-collection')) ? JSON.parse(localStorage.getItem('todo-collection')) : []) => {
     const menuList = document.querySelector('#menu-items');
     const defaultProject = createDefaultProject('Default');
     const newProjectBtn = newProjectButton();
@@ -39,7 +39,10 @@ initialize();
 document.addEventListener('click', (event) => {
     if (event.target.id === 'addProjectBtn') {
         if (document.getElementById('projectName').value.trim().length > 4) {
+            const projects = JSON.parse(localStorage.getItem('project-collection')) ? JSON.parse(localStorage.getItem('project-collection')) : [];
+            projects.push(document.getElementById('projectName').value);
             addNewProject(document.getElementById('projectName').value);
+            localStorage.setItem('project-collection', JSON.stringify(projects));
             document.getElementById('projectName').value = '';
         }
     }
@@ -66,7 +69,8 @@ document.getElementById('saveBtn').onclick = () => {
         title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
     );
 
-    if (Object.values(todo).every((input) => input.length > 2)) saveNewToDo(todo);
+    if (!Object.values(todo).every((input) => input.length > 2)) return;
+    saveNewToDo(todo);
     resetFields(title, desc, projectName, priorityLevel, dueDate);
     $('#todoModal').modal('hide');
 };
