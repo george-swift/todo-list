@@ -31,9 +31,9 @@ const addNewProject = (project) => {
 };
 
 const addToSelect = (project) => {
-  const select = document.querySelector('#todoProjectList');
-  const name = wrapProject(project);
-  select.appendChild(name);
+    const select = document.querySelector('#todoProjectList');
+    const name = wrapProject(project);
+    select.appendChild(name);
 };
 
 const superToggle = (elem, old, curr) => {
@@ -63,6 +63,14 @@ document.addEventListener('click', (event) => {
 
         const adjacentDiv = document.querySelector('#addProjectForm');
         superToggle(adjacentDiv, 'd-block', 'd-none');
+    }
+
+    if (event.target.parentNode.className === 'project-name' | event.target.parentNode.className === 'project-name-default') {
+        const todos = JSON.parse(localStorage.getItem('todo-collection')).filter(project => project.projectName.toLowerCase() === event.target.id.split('-')[1]);
+        document.getElementById('todo-app').innerHTML = '';
+        const todoapp = document.querySelector('#todo-app');
+
+        todoapp.appendChild(createCards(todos));
     }
 });
 
