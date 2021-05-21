@@ -1,4 +1,6 @@
 import attributes from './domManager.js';
+import Pushpin from '../assets/push-pin.svg';
+import Plus from '../assets/plus.svg';
 
 const customAttributes = (elem, attributes) => {
   Object.entries(attributes).forEach(([key, value]) => {
@@ -15,9 +17,11 @@ const customLink = () => {
 
   const defaultIcon = document.createElement('img');
   customAttributes(defaultIcon, attributes.icon.default);
+  defaultIcon.src = Pushpin;
 
   const addNewIcon = document.createElement('img');
   customAttributes(addNewIcon, attributes.icon.new);
+  addNewIcon.src = Plus;
 
   const text = document.createElement('span');
 

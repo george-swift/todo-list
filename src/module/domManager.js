@@ -17,11 +17,9 @@ const attributes = (() => ({
   icon: {
     default: {
       class: 'project-icon',
-      src: '../src/assets/push-pin.svg',
     },
     new: {
       class: 'project-icon',
-      src: '../src/assets/plus.svg',
     },
   },
 
