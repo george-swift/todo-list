@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400&display=swap');
 body {
     font-family: 'Work Sans', sans-serif;
 }
@@ -9,24 +9,43 @@ body {
 
 a,
 a:hover {
-    color: #34495e;
-    text-decoration: none;
+  font-size: 1.2em;
+  letter-spacing: -0.75px;
+  font-weight: 350;
+  color: #34495e;
+  text-decoration: none;
 }
 
 .navbar {
-    padding: 0 1.5rem;
+  padding: 0 1.5rem;
+}
+
+#app-name {
+  transition: none;
 }
 
 .navbar-brand {
-    font-size: 1.25em;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    font-weight: bold;
+  font-size: 1.25em;
+  text-transform: uppercase;
+}
+
+.navbar-brand,
+.font-custom {
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.nav-link {
+  transition: font-size 0.4s ease-in-out;
+}
+
+.nav-link:hover {
+  font-size: 0.9em;
 }
 
 .center {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .fs-8 {
@@ -131,18 +150,14 @@ h5 {
     min-height: 85%;
 }
 
+.task {
+  border-color: #34495e;
+}
+
 .task:hover {
-    cursor: pointer;
-    font-weight: 350 !important;
-    color: #34495e;
-}
-
-.plus {
-    border-radius: 50%;
-}
-
-.task:hover .plus {
-    background-color: #ececec;
+  cursor: pointer;
+  font-weight: 350 !important;
+  color: #34495e;
 }
 
 .overlay {
@@ -224,6 +239,10 @@ textarea {
 
 .clear:hover {
     text-decoration: underline;
+}
+
+.desc-td {
+  height: 150px !important;
 }
 
 @media screen and (max-width: 1200px) {
