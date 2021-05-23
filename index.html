@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../src/style.css"> -->
     <title>ToDo List</title>
 </head>
 
@@ -36,9 +35,6 @@
             <section class="sidebar pt-4">
                 <ul class="wrap-sb pt-2 fs-6">
                     <li class="option center">
-                        <a href="#" id="sidebarInbox"><img src="../src/assets/inbox-solid.svg" alt="inbox icon" class="icons">Inbox</a>
-                    </li>
-                    <li class="option center">
                         <a href="#" id="sidebarToday"><img src="../src/assets/calendar.svg" alt="inbox icon" class="icons">Today</a>
                     </li>
                     <li class="option center">
@@ -63,9 +59,9 @@
             </section>
 
             <section class="main-page">
-                <div class="mp-header font-custom fs-4 center mt-3" id="tabTitle">Today</div>
+                <div class="mp-header font-custom fs-4 center mt-3" id="tabTitle">Default</div>
                 <div class="mp-body" id="mp-body">
-                    <button class="btn fw-light task" type="button" data-bs-toggle="modal" data-bs-target="#todoModal">
+                    <button class="btn btn-outline-secondary fw-light task" type="button" data-bs-toggle="modal" data-bs-target="#todoModal">
                       Add task
                     </button>
                     <div id="todo-app"></div>
