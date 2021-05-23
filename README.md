@@ -36,6 +36,7 @@ All tasks and projects are stored in Local Storage.
 - Run `npm install` to install the needed packages and dependencies
 - Open the directory in your preferred IDE to view source files
 - Development tools are included in the npm script. Run `npm run watch` and fire up a local server to view any dev changes.
+- Open the index.html file in the `./dist` folder to lunch the application in the browser.
 - To terminate the server, enter `Ctrl + C` in your terminal
 
 ## Authors
