@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 body {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .darkblue {
@@ -148,16 +148,6 @@ h5 {
 
 .mp-body {
     min-height: 85%;
-}
-
-.task {
-    border-color: #34495e;
-}
-
-.task:hover {
-    cursor: pointer;
-    font-weight: 350 !important;
-    color: #34495e;
 }
 
 .editor,

@@ -1,5 +1,6 @@
 ## To-do List
 ![screenshot](./screenshot.png)
+
 ## Live Link
 Visit the [To-do List](https://george-swift.github.io/todo-list/) to get started
 
@@ -9,9 +10,9 @@ Visit the [To-do List](https://george-swift.github.io/todo-list/) to get started
 - Code organization with ES6 modules in Javascript
 - Using Webpack for compiling Javascript modules
 - DOM manipulation
-## Features
 
-> The todo list application organizes a user's tasks in items and projects. To create a todo list, click 
+## Features
+The todo list application organizes a user's tasks in items and projects. To create a todo list, click 
 on the `Add task` button or the `Quick Add Task` in the navigation bar. The task is created by filling 
 the input fields in the modal that appears. On first visit, users' tasks are saved to a default project. 
 Users can however create new projects from the sidebar. The modal provides options to assign tasks to a project. 
