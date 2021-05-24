@@ -75,4 +75,4 @@ function createCards(todos) {
   return cardsContainer;
 }
 
-export { createCards };
+export default createCards;
