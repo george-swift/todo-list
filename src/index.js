@@ -71,6 +71,20 @@ const saveNewToDo = (item) => {
     tabTitle.textContent = item.projectName.toLowerCase();
 };
 
+const updateTodo = (todo) => {
+    const todos = JSON.parse(localStorage.getItem('todo-collection'));
+    todos[todo.id] = todo;
+    localStorage.setItem('todo-collection', JSON.stringify(todos));
+
+    document.getElementById('todo-app').innerHTML = '';
+    const todoapp = document.querySelector('#todo-app');
+    todoapp.appendChild(createCards(todos.filter((todo) => todo.projectName.toLowerCase() === todo.projectName.toLowerCase())));
+
+    document.getElementById('tabTitle').innerHTML = '';
+    const tabTitle = document.querySelector('#tabTitle');
+    tabTitle.textContent = todo.projectName.toLowerCase();
+}
+
 const resetFields = (...fields) => {
     fields.forEach((field) => {
         field.value = '';
@@ -114,7 +128,8 @@ document.addEventListener('click', (event) => {
 
     if (event.target.id.includes('delete-')) {
         const todos = JSON.parse(localStorage.getItem('todo-collection'));
-        todos.splice(todos.indexOf(todos.filter((todo) => todo.id === parseInt(event.target.id.split('-')[1]))));
+        const todoIndex = todos.indexOf(todos.filter((todo) => todo.id === parseInt(event.target.id.split('-')[1]))[0]);
+        todos.splice(todoIndex, 1);
         localStorage.setItem('todo-collection', JSON.stringify(todos));
 
         document.getElementById('todo-app').innerHTML = '';
@@ -124,8 +139,10 @@ document.addEventListener('click', (event) => {
 
     if (event.target.id.includes('edit-')) {
         const todos = JSON.parse(localStorage.getItem('todo-collection'));
-        const todo = todos.filter((todo) => todo.id === parseInt(event.target.id.split('-')[1]));
-        const todoIndex = todos.indexOf(todo);
+        const todoIndex = todos.indexOf(todos.filter((todo) => todo.id === parseInt(event.target.id.split('-')[1]))[0]);
+        const todo = todos[todoIndex];
+
+        document.querySelector('#activeTodo').value = todoIndex;
 
         document.querySelector('#todoTitle').value = todo.title;
         document.querySelector('#todoDesc').value = todo.description;
@@ -133,6 +150,7 @@ document.addEventListener('click', (event) => {
         document.querySelector('#todoPriorities').value = todo.priority;
         document.querySelector('#datepicker').value = todo.dueDate;
 
+        $('#todoModal').modal('show');
     }
 });
 
@@ -142,14 +160,23 @@ document.getElementById('saveBtn').onclick = () => {
     const projectName = document.querySelector('#todoProjectList');
     const priorityLevel = document.querySelector('#todoPriorities');
     const dueDate = document.querySelector('#datepicker');
-    const id = JSON.parse(localStorage.getItem('todo-collection')) ? JSON.parse(localStorage.getItem('todo-collection')).length + 1 : 0;
 
-    const todo = new Todo(
-        id, title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
-    );
+    if (document.querySelector('#activeTodo').value) {
+        const todo = new Todo(
+            parseInt(document.querySelector('#activeTodo').value), title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
+        );
+        updateTodo(todo);
 
-    saveNewToDo(todo);
+    } else {
+        id = JSON.parse(localStorage.getItem('todo-collection')) ? JSON.parse(localStorage.getItem('todo-collection')).length + 1 : 0;
+        const todo = new Todo(
+            id, title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
+        );
+        saveNewToDo(todo);
+    }
+
     resetFields(title, desc, projectName, priorityLevel, dueDate);
-    // eslint-disable-next-line no-undef
+
     $('#todoModal').modal('hide');
+    document.querySelector('#activeTodo').value = '';
 };
