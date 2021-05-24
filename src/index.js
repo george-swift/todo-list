@@ -101,6 +101,16 @@ document.addEventListener('click', (event) => {
         const tabTitle = document.querySelector('#tabTitle');
         tabTitle.textContent = event.target.id.split('-')[1];
     }
+
+    if (event.target.id.includes('delete-')) {
+        const todos = JSON.parse(localStorage.getItem('todo-collection'));
+        todos.splice(parseInt(event.target.id.split('-')[1]), 1);
+        localStorage.setItem('todo-collection', JSON.stringify(todos));
+
+        document.getElementById('todo-app').innerHTML = '';
+        const todoapp = document.querySelector('#todo-app');
+        todoapp.appendChild(createCards(todos));
+    }
 });
 
 document.getElementById('saveBtn').onclick = () => {

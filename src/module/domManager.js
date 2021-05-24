@@ -79,7 +79,7 @@ const attributes = (() => ({
             },
         },
         footer: {
-            class: 'card-footer d-flex justify-content-end'
+            class: 'card-footer d-flex'
         },
         editButton: {
             class: 'btn btn-secondary btn-sm me-1'
