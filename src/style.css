@@ -1,247 +1,255 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 body {
-    font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .darkblue {
-    background-color: #34495e;
+  background-color: #34495e;
 }
 
 a,
 a:hover {
-    font-weight: 350;
-    font-size: 1.2em;
-    letter-spacing: -0.75px;
-    color: #34495e;
-    text-decoration: none;
+  font-weight: 350;
+  font-size: 1.2em;
+  letter-spacing: -0.75px;
+  color: #34495e;
+  text-decoration: none;
 }
 
 .navbar {
-    padding: 0 1.5rem;
+  padding: 0 1.5rem;
 }
 
 #app-name {
-    transition: none;
+  transition: none;
 }
 
 .navbar-brand {
-    font-size: 1.25em;
-    text-transform: uppercase;
+  font-size: 1.25em;
+  text-transform: uppercase;
 }
 
 .navbar-brand,
 .font-custom {
-    letter-spacing: -1px;
-    font-weight: bold;
+  letter-spacing: -1px;
+  font-weight: bold;
 }
 
 .nav-link {
-    transition: font-size 0.4s ease-in-out;
+  transition: font-size 0.4s ease-in-out;
 }
 
 .nav-link:hover {
-    font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 .center {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .fs-8 {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 .homepage {
-    min-height: 93vh;
+  min-height: 93vh;
 }
 
 .sidebar {
-    flex: 0 0 auto;
-    width: 20%;
-    background-color: #fafafa;
+  flex: 0 0 auto;
+  width: 20%;
+  background-color: #fafafa;
 }
 
 ul,
 .drop-down {
-    padding-left: 30px;
-    list-style: none;
+  padding-left: 30px;
+  list-style: none;
 }
 
 .option {
-    padding: 0.3rem 0.5rem;
-    margin-bottom: 0.2rem;
-    border-radius: 3px;
-    transition: background-color 0.5s ease-out;
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.2rem;
+  border-radius: 3px;
+  transition: background-color 0.5s ease-out;
 }
 
 .option:hover,
 .active {
-    background-color: #ececec;
+  background-color: #ececec;
 }
 
 .icons {
-    width: 25px;
-    height: 25px;
-    margin-right: 1rem;
+  width: 25px;
+  height: 25px;
+  margin-right: 1rem;
 }
 
 .project-icon {
-    margin-right: 0.5rem;
-    width: 16px;
-    height: 16px;
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
 }
 
 .project-name::before {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 0.8rem;
-    background-color: #aaa;
-    border-radius: 50%;
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 0.8rem;
+  background-color: #aaa;
+  border-radius: 50%;
 }
 
 .heading,
 .wrap-btns {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 h5 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .drop-down ul {
-    padding: 0.5rem 0;
+  padding: 0.5rem 0;
 }
 
 .accordion-button {
-    padding: 1rem 1.25rem 1rem 0.75rem;
-    font-weight: bold;
+  padding: 1rem 1.25rem 1rem 0.75rem;
+  font-weight: bold;
 }
 
 .accordion-body {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .custom-btn {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
 }
 
 .main-page {
-    flex: 0 0 auto;
-    width: 80%;
+  flex: 0 0 auto;
+  width: 80%;
 }
 
 .mp-header {
-    min-height: 10%;
+  min-height: 10%;
 }
 
 .mp-header,
 .mp-body {
-    width: 75%;
-    margin: 0 auto;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .mp-body {
-    min-height: 85%;
+  min-height: 85%;
 }
 
 .editor,
 .editor.open {
-    min-height: 10rem;
-    padding: 0.3rem;
+  min-height: 10rem;
+  padding: 0.3rem;
 }
 
 .close {
-    background: none;
-    border: none;
-    color: floralwhite;
-    font-weight: bold;
-    border-radius: 10%;
+  background: none;
+  border: none;
+  color: floralwhite;
+  font-weight: bold;
+  border-radius: 10%;
 }
 
 .editor * {
-    font-size: 14px !important;
+  font-size: 14px !important;
 }
 
 textarea {
-    height: 100px;
+  height: 100px;
 }
 
 .datepicker {
-    padding-left: 0.8rem !important;
+  padding-left: 0.8rem !important;
 }
 
 .actions {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.8rem;
 }
 
 .wrapper {
-    padding: 0.5rem;
-    width: 100%;
+  padding: 0.5rem;
+  width: 100%;
 }
 
 .w-48 {
-    width: 48%;
+  width: 48%;
 }
 
 .clear:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .desc-td {
-    height: 150px !important;
+  height: 150px !important;
 }
 
 @media screen and (max-width: 1200px) {
-    .sidebar {
-        width: 35%;
-    }
-    .main-page {
-        width: 65%;
-    }
-    ul,
-    .drop-down {
-        padding-left: 0;
-        list-style: none;
-    }
-    .wrapper {
-        padding: 0.75rem 0;
-    }
+  .sidebar {
+    width: 35%;
+  }
+
+  .main-page {
+    width: 65%;
+  }
+
+  ul,
+  .drop-down {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .wrapper {
+    padding: 0.75rem 0;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .sidebar,
-    .main-page {
-        width: 100%;
-    }
-    .navbar-nav {
-        align-items: flex-end;
-    }
+  .sidebar,
+  .main-page {
+    width: 100%;
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .sidebar,
-    .main-page {
-        padding-left: 0;
-    }
-    .navbar,
-    ul,
-    .drop-down {
-        padding-left: 0.8rem;
-    }
-    .mp-header,
-    .mp-body {
-        width: 85vw;
-    }
-    .mp-body .btn {
-        width: 100%;
-        margin-top: 0.8em;
-    }
+  .sidebar,
+  .main-page {
+    padding-left: 0;
+  }
+
+  .navbar,
+  ul,
+  .drop-down {
+    padding-left: 0.8rem;
+  }
+
+  .mp-header,
+  .mp-body {
+    width: 85vw;
+  }
+
+  .mp-body .btn {
+    width: 100%;
+    margin-top: 0.8em;
+  }
 }
