@@ -54,10 +54,12 @@ function createCards(todos) {
         const editButton = document.createElement('button');
         defineAttributes(editButton, attributes.card.editButton);
         editButton.textContent = 'Edit';
+        editButton.id = `edit-${i}`;
 
         const deleteButton = document.createElement('button');
         defineAttributes(deleteButton, attributes.card.deleteButton);
         deleteButton.textContent = 'Delete';
+        deleteButton.id = `delete-${i}`;
 
         cardFooter.append(editButton, deleteButton);
 

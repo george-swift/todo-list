@@ -82,11 +82,10 @@ const attributes = (() => ({
             class: 'card-footer d-flex justify-content-end'
         },
         editButton: {
-            class: 'btn btn-secondary btn-sm me-2'
+            class: 'btn btn-secondary btn-sm me-1'
         },
         deleteButton: {
-            class: 'btn btn-danger btn-sm',
-            textContent: 'Delete'
+            class: 'btn btn-danger btn-sm'
         }
     },
 }))();
