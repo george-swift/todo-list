@@ -56,8 +56,11 @@ const saveNewToDo = (item) => {
 
     document.getElementById('todo-app').innerHTML = '';
     const todoapp = document.querySelector('#todo-app');
+    todoapp.appendChild(createCards(todos.filter(todo => todo.projectName.toLowerCase() === item.projectName.toLowerCase())));
 
-    todoapp.appendChild(createCards(todos));
+    document.getElementById('tabTitle').innerHTML = '';
+    const tabTitle = document.querySelector('#tabTitle');
+    tabTitle.textContent = item.projectName.toLowerCase();
 };
 
 const resetFields = (...fields) => {
@@ -104,12 +107,12 @@ document.addEventListener('click', (event) => {
 
     if (event.target.id.includes('delete-')) {
         const todos = JSON.parse(localStorage.getItem('todo-collection'));
-        todos.splice(parseInt(event.target.id.split('-')[1]), 1);
+        todos.splice(todos.indexOf(todos.filter(todo => todo.id === parseInt(event.target.id.split('-')[1]))));
         localStorage.setItem('todo-collection', JSON.stringify(todos));
 
         document.getElementById('todo-app').innerHTML = '';
         const todoapp = document.querySelector('#todo-app');
-        todoapp.appendChild(createCards(todos));
+        todoapp.appendChild(createCards(todos.filter(todo => todo.projectName.toLowerCase() === document.querySelector('#tabTitle').textContent.toLowerCase())));
     }
 });
 
@@ -119,12 +122,11 @@ document.getElementById('saveBtn').onclick = () => {
     const projectName = document.querySelector('#todoProjectList');
     const priorityLevel = document.querySelector('#todoPriorities');
     const dueDate = document.querySelector('#datepicker');
-
+    const id = JSON.parse(localStorage.getItem('todo-collection')) ? JSON.parse(localStorage.getItem('todo-collection')).length + 1 : 0;
     const todo = new Todo(
-        title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
+        id, title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
     );
 
-    if (!Object.values(todo).every((input) => input.length > 2)) return;
     saveNewToDo(todo);
     resetFields(title, desc, projectName, priorityLevel, dueDate);
     // eslint-disable-next-line no-undef

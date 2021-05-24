@@ -1,6 +1,7 @@
 import attributes from './domManager.js';
 
-function Todo(title, description, dueDate, priority, project) {
+function Todo(id, title, description, dueDate, priority, project) {
+    this.id = id;
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -54,12 +55,12 @@ function createCards(todos) {
         const editButton = document.createElement('button');
         defineAttributes(editButton, attributes.card.editButton);
         editButton.textContent = 'Edit';
-        editButton.id = `edit-${i}`;
+        editButton.id = `edit-${todos[i].id}`;
 
         const deleteButton = document.createElement('button');
         defineAttributes(deleteButton, attributes.card.deleteButton);
         deleteButton.textContent = 'Delete';
-        deleteButton.id = `delete-${i}`;
+        deleteButton.id = `delete-${todos[i].id}`;
 
         cardFooter.append(editButton, deleteButton);
 
