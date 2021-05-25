@@ -10,21 +10,12 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg darkblue">
-        <div class="container-fluid">
-            <a class="navbar-brand center text-white" href="#" id="app-name">
-                <img src="../src/assets/to-do.svg" alt="to-do list icon"> To-do List
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="">
-          <img src="../src/assets/hamburger.svg" alt="menu icon">
-        </span>
-      </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <nav class="navbar navbar-expand-lg sticky-top darkblue">
+        <div class="container-fluid" id="app-name">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobile" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarMobile">
                 <div class="navbar-nav">
-                    <a class="nav-link addProject center fs-8 text-white" href="#todoModal" data-bs-toggle="modal">
-                        <img src="../src/assets/add-task.png" alt="add task icon" class="me-2"> Quick Add Task
-                    </a>
+                    <a class="nav-link addProject center fs-8 text-white" id="quick-add" href="#todoModal" data-bs-toggle="modal"></a>
                 </div>
             </div>
         </div>
@@ -35,10 +26,10 @@
             <section class="sidebar pt-4">
                 <ul class="wrap-sb pt-2 fs-6">
                     <li class="option center">
-                        <a href="#" id="sidebarToday"><img src="../src/assets/calendar.svg" alt="inbox icon" class="icons">Today</a>
+                        <a href="#" id="sidebarToday"><img id="calendar" alt="calendar icon" class="icons">Today</a>
                     </li>
                     <li class="option center">
-                        <a href="#" id="sidebarUpcoming"><img src="../src/assets/upcoming.svg" alt="inbox icon" class="icons">Upcoming</a>
+                        <a href="#" id="sidebarUpcoming"><img id="upcoming" alt="schedule icon" class="icons">Upcoming</a>
                     </li>
                 </ul>
 
@@ -59,7 +50,9 @@
             </section>
 
             <section class="main-page">
-                <div class="mp-header font-custom fs-4 center mt-3" id="tabTitle">Default</div>
+                <div class="mp-header center mt-3 mb-1">
+                    <h3 class="font-custom" id="tabTitle">Default</h3>
+                </div>
                 <div class="mp-body" id="mp-body">
                     <button class="btn btn-outline-secondary fw-light task" type="button" data-bs-toggle="modal" data-bs-target="#todoModal">
                       Add task
