@@ -1,11 +1,30 @@
 const attributes = (() => ({
+  navbar: {
+    brand: {
+      href: '#',
+      class: 'navbar-brand center text-white',
+    },
+
+    logo: { alt: 'to-do list icon' },
+
+    hamburger: {
+      id: 'hamburger',
+      alt: 'menu icon',
+    },
+
+    action: {
+      alt: 'add task icon',
+      class: 'me-2',
+    },
+  },
+
   div: {
     class: 'd-none wrapper',
     id: 'addProjectForm',
   },
 
   li: {
-    class: 'option center',
+    class: 'option center justify-content-between',
   },
 
   a: {
@@ -21,6 +40,11 @@ const attributes = (() => ({
     new: {
       class: 'project-icon',
     },
+  },
+
+  date: {
+    class: 'd-none mb-1 ms-3',
+    id: 'date',
   },
 
   wrap: {
@@ -41,6 +65,10 @@ const attributes = (() => ({
     class: 'btn btn-danger text-white w-48',
     id: 'cancelBtn',
     textContent: 'Cancel',
+  },
+
+  project: {
+    class: 'badge bg-primary rounded-pill',
   },
 
   card: {
