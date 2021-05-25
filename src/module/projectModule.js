@@ -25,12 +25,16 @@ const customLink = () => {
 
   const text = document.createElement('span');
 
+  const tracker = document.createElement('span');
+  customAttributes(tracker, attributes.project);
+
   return {
     option,
     anchor,
     defaultIcon,
     addNewIcon,
     text,
+    tracker,
   };
 };
 
@@ -40,14 +44,17 @@ const createDefaultProject = (name) => {
     anchor,
     defaultIcon,
     text,
+    tracker,
   } = customLink();
 
   text.textContent = name;
   text.id = 'pr-default';
 
+  tracker.id = name;
+
   anchor.append(defaultIcon, text);
   anchor.className = 'project-name-default';
-  option.appendChild(anchor);
+  option.append(anchor, tracker);
 
   return option;
 };
@@ -101,14 +108,21 @@ const newProjectButton = () => {
 };
 
 const createProject = (project) => {
-  const { option, anchor, text } = customLink();
+  const {
+    option,
+    anchor,
+    text,
+    tracker,
+  } = customLink();
 
   customAttributes(anchor, attributes.a.created);
   text.textContent = project;
   text.id = `pr-${project.toLowerCase()}`;
 
+  tracker.id = `${project.split(' ').join('-')}`;
+
   anchor.appendChild(text);
-  option.appendChild(anchor);
+  option.append(anchor, tracker);
 
   return option;
 };

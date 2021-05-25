@@ -1,5 +1,14 @@
 import attributes from './domManager.js';
 
+function Todo(id, title, description, dueDate, priority, project) {
+  this.id = id;
+  this.title = title;
+  this.description = description;
+  this.dueDate = dueDate;
+  this.priority = priority;
+  this.projectName = project;
+}
+
 function defineAttributes(elem, attributes) {
   Object.entries(attributes).forEach(([key, value]) => {
     elem.setAttribute(key, value);
@@ -75,4 +84,4 @@ function createCards(todos) {
   return cardsContainer;
 }
 
-export default createCards;
+export { Todo, createCards };
