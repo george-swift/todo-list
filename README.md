@@ -38,7 +38,7 @@ All tasks and projects are stored in Local Storage.
 - A development tool is included in the npm script. Run npm start to fire up a local server with live reloading.
 - If not already redirected, visit `http://localhost:8080/` in your browser to use the Todo List with dev server.
 - Open the directory in your preferred IDE to view source files
-- Alternatively, open the index.html file in the `./dist` folder to lunch the application in the browser.
+- Alternatively, open the index.html file in the `./dist` folder to launch the application in your browser.
 - To terminate the server, enter `Ctrl + C` in your terminal
 
 ## Authors

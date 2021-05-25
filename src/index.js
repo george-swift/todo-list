@@ -60,7 +60,7 @@ const initialize = () => {
     displayTracker(project);
   });
 
-  const onLoad = todos.filter(((item) => item.projectName.toLowerCase() === 'default'));
+  const onLoad = todos.filter((item) => item.projectName.toLowerCase() === 'default');
 
   const todoapp = document.querySelector('#todo-app');
   todoapp.appendChild(createCards(onLoad));
@@ -106,7 +106,6 @@ const updateTodo = (todo) => {
   const projectTodo = todos.filter((todo) => todo.projectName.toLowerCase() === displayFormat);
   todoapp.appendChild(createCards(projectTodo));
 
-  document.getElementById('tabTitle').innerHTML = '';
   const tabTitle = document.querySelector('#tabTitle');
   tabTitle.textContent = todo.projectName.toLowerCase();
 };
@@ -117,11 +116,28 @@ const resetFields = (...fields) => {
   });
 };
 
+const validateInput = (todo, fn) => {
+  if (!Object.values(todo).every((input) => input.length > 2)) return;
+  const dueDate = document.querySelector('#datepicker');
+  const T = new Date().setHours(0, 0, 0, 0);
+
+  if ((T.valueOf() !== validFormat(todo.dueDate))
+  && T.valueOf() < validFormat(todo.dueDate) === false) {
+    dueDate.classList.add('is-invalid');
+    dueDate.value = '';
+  } else {
+    if (dueDate.classList.contains('is-invalid')) dueDate.classList.remove('is-invalid');
+    fn(todo);
+    updateTracker(todo);
+    $('#todoModal').modal('hide');
+    document.querySelector('#activeTodo').value = '';
+  }
+};
+
 document.addEventListener('click', (event) => {
   if (event.target.id === 'addProjectBtn') {
     if (document.getElementById('projectName').value.trim().length > 4) {
-      const projects = JSON.parse(localStorage.getItem('project-collection'))
-        ? JSON.parse(localStorage.getItem('project-collection')) : [];
+      const projects = collection('project');
       projects.push(document.getElementById('projectName').value);
       addNewProject(document.getElementById('projectName').value);
       localStorage.setItem('project-collection', JSON.stringify(projects));
@@ -167,6 +183,7 @@ document.addEventListener('click', (event) => {
     const displayedHeader = document.querySelector('#tabTitle').textContent.toLowerCase();
     todoapp.appendChild(createCards(todos
       .filter((todo) => todo.projectName.toLowerCase() === displayedHeader)));
+    collection('project').forEach((project) => displayTracker(project));
   }
 
   if (event.target.id.includes('edit-')) {
@@ -196,8 +213,6 @@ document.getElementById('saveBtn').onclick = () => {
 
   const secretKey = document.querySelector('#activeTodo');
 
-  const T = new Date().setHours(0, 0, 0, 0);
-
   if (secretKey.value) {
     const todo = new Todo(
       secretKey.value,
@@ -208,19 +223,7 @@ document.getElementById('saveBtn').onclick = () => {
       projectName.value,
     );
 
-    if (!Object.values(todo).every((input) => input.length > 2)) return;
-
-    if ((T.valueOf() !== validFormat(todo.dueDate))
-    && T.valueOf() < validFormat(todo.dueDate) === false) {
-      dueDate.classList.add('is-invalid');
-      dueDate.value = '';
-    } else {
-      if (dueDate.classList.contains('is-invalid')) dueDate.classList.remove('is-invalid');
-      updateTodo(todo);
-      updateTracker(todo);
-      $('#todoModal').modal('hide');
-      document.querySelector('#activeTodo').value = '';
-    }
+    validateInput(todo, updateTodo);
   } else {
     const storageIndex = localStorage.getItem('todo-collection')
       ? JSON.parse(localStorage.getItem('todo-collection')).length + 1 : 0;
@@ -236,19 +239,7 @@ document.getElementById('saveBtn').onclick = () => {
       projectName.value,
     );
 
-    if (!Object.values(todo).every((input) => input.length > 2)) return;
-
-    if ((T.valueOf() !== validFormat(todo.dueDate))
-    && T.valueOf() < validFormat(todo.dueDate) === false) {
-      dueDate.classList.add('is-invalid');
-      dueDate.value = '';
-    } else {
-      if (dueDate.classList.contains('is-invalid')) dueDate.classList.remove('is-invalid');
-      saveNewToDo(todo);
-      updateTracker(todo);
-      $('#todoModal').modal('hide');
-      document.querySelector('#activeTodo').value = '';
-    }
+    validateInput(todo, saveNewToDo);
   }
 };
 
