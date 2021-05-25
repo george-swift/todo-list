@@ -35,9 +35,10 @@ All tasks and projects are stored in Local Storage.
 ## Getting Started
 - To get started with the app, clone this project by running `git clone https://github.com/george-swift/todo-list.git`
 - Run `npm install` to install the needed packages and dependencies
+- A development tool is included in the npm script. Run npm start to fire up a local server with live reloading.
+- If not already redirected, visit `http://localhost:8080/` in your browser to use the Todo List with dev server.
 - Open the directory in your preferred IDE to view source files
-- Development tools are included in the npm script. Run `npm run watch` and fire up a local server to view any dev changes.
-- Open the index.html file in the `./dist` folder to lunch the application in the browser.
+- Alternatively, open the index.html file in the `./dist` folder to lunch the application in the browser.
 - To terminate the server, enter `Ctrl + C` in your terminal
 
 ## Authors
