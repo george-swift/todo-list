@@ -8,16 +8,9 @@ import {
   wrapProject,
 } from './module/projectModule.js';
 
-import createCards from './module/todoModule.js';
+import { Todo, createCards } from './module/todoModule.js';
 
-function Todo(id, title, description, dueDate, priority, project) {
-  this.id = id;
-  this.title = title;
-  this.description = description;
-  this.dueDate = dueDate;
-  this.priority = priority;
-  this.projectName = project;
-}
+import { validFormat, uxManager } from './module/uxmanager.js';
 
 const addToSelect = (project) => {
   const select = document.querySelector('#todoProjectList');
@@ -39,48 +32,78 @@ const superToggle = (elem, old, curr) => {
   elem.classList.add(curr);
 };
 
-const initialize = (projects = JSON.parse(localStorage.getItem('project-collection'))
-  ? JSON.parse(localStorage.getItem('project-collection')) : [], todos = JSON.parse(localStorage.getItem('todo-collection'))
-  ? JSON.parse(localStorage.getItem('todo-collection')).filter((todo) => todo.projectName.toLowerCase() === 'default') : []) => {
+const collection = (key) => {
+  const storage = localStorage.getItem(`${key}-collection`)
+    ? JSON.parse(localStorage.getItem(`${key}-collection`)) : [];
+  return storage;
+};
+
+const displayTracker = (project) => {
+  const todos = collection('todo');
+  const defaultTodos = todos.filter((storedTodo) => storedTodo.projectName === 'Default').length;
+  const customTodos = todos.filter((storedTodo) => storedTodo.projectName === project).length;
+  document.querySelector('#Default').textContent = defaultTodos;
+  document.querySelector(`#${project.split(' ').join('-')}`).textContent = customTodos;
+};
+
+const initialize = () => {
+  const projects = collection('project');
+  const todos = collection('todo');
+
   const menuList = document.querySelector('#menu-items');
   const defaultProject = createDefaultProject('Default');
   const newProjectBtn = newProjectButton();
   menuList.append(defaultProject, newProjectBtn);
 
-  projects.forEach((project) => addNewProject(project));
+  projects.forEach((project) => {
+    addNewProject(project);
+    displayTracker(project);
+  });
+
+  const onLoad = todos.filter(((item) => item.projectName.toLowerCase() === 'default'));
 
   const todoapp = document.querySelector('#todo-app');
-  todoapp.appendChild(createCards(todos));
+  todoapp.appendChild(createCards(onLoad));
 };
 
 initialize();
+uxManager();
 
 const saveNewToDo = (item) => {
-  const todos = JSON.parse(localStorage.getItem('todo-collection'))
-    ? JSON.parse(localStorage.getItem('todo-collection')) : [];
+  const todos = collection('todo');
   todos.push(item);
   localStorage.setItem('todo-collection', JSON.stringify(todos));
 
   document.getElementById('todo-app').innerHTML = '';
   const todoapp = document.querySelector('#todo-app');
-  const prjLwC = item.projectName.toLowerCase();
-  const projectTodo = todos.filter((todo) => todo.projectName.toLowerCase() === prjLwC);
+  const displayFormat = item.projectName.toLowerCase();
+
+  const projectTodo = todos.filter((todo) => todo.projectName.toLowerCase() === displayFormat);
   todoapp.appendChild(createCards(projectTodo));
 
-  document.getElementById('tabTitle').innerHTML = '';
   const tabTitle = document.querySelector('#tabTitle');
-  tabTitle.textContent = item.projectName.toLowerCase();
+  tabTitle.textContent = displayFormat;
+};
+
+const updateTracker = (todo) => {
+  const todos = collection('todo');
+  const projectTodos = todos
+    .filter((storedTodo) => storedTodo.projectName === todo.projectName).length;
+  document.querySelector(`#${todo.projectName.split(' ').join('-')}`).textContent = projectTodos;
 };
 
 const updateTodo = (todo) => {
   const todos = JSON.parse(localStorage.getItem('todo-collection'));
-  todos[todo.id] = todo;
+  const index = todos.findIndex((item) => item.id === todo.id);
+
+  todos[index] = todo;
   localStorage.setItem('todo-collection', JSON.stringify(todos));
 
   document.getElementById('todo-app').innerHTML = '';
   const todoapp = document.querySelector('#todo-app');
-  const prjLwC = todo.projectName.toLowerCase();
-  const projectTodo = todos.filter((todoItem) => todoItem.projectName.toLowerCase() === prjLwC);
+  const displayFormat = todo.projectName.toLowerCase();
+
+  const projectTodo = todos.filter((todo) => todo.projectName.toLowerCase() === displayFormat);
   todoapp.appendChild(createCards(projectTodo));
 
   document.getElementById('tabTitle').innerHTML = '';
@@ -131,21 +154,28 @@ document.addEventListener('click', (event) => {
 
   if (event.target.id.includes('delete-')) {
     const todos = JSON.parse(localStorage.getItem('todo-collection'));
-    const todoIndex = todos.indexOf(todos.filter((todo) => todo.id === parseInt(event.target.id.split('-')[1], 10))[0]);
-    todos.splice(todoIndex, 1);
+    const [, finder] = event.target.id.split('-');
+
+    const index = todos.findIndex((todo) => todo.id === finder);
+
+    todos.splice(index, 1);
+
     localStorage.setItem('todo-collection', JSON.stringify(todos));
 
     document.getElementById('todo-app').innerHTML = '';
     const todoapp = document.querySelector('#todo-app');
-    todoapp.appendChild(createCards(todos.filter((todo) => todo.projectName.toLowerCase() === document.querySelector('#tabTitle').textContent.toLowerCase())));
+    const displayedHeader = document.querySelector('#tabTitle').textContent.toLowerCase();
+    todoapp.appendChild(createCards(todos
+      .filter((todo) => todo.projectName.toLowerCase() === displayedHeader)));
   }
 
   if (event.target.id.includes('edit-')) {
     const todos = JSON.parse(localStorage.getItem('todo-collection'));
-    const todoIndex = todos.indexOf(todos.filter((todo) => todo.id === parseInt(event.target.id.split('-')[1], 10))[0]);
-    const todo = todos[todoIndex];
 
-    document.querySelector('#activeTodo').value = todoIndex;
+    const [, finder] = event.target.id.split('-');
+    const [todo] = todos.filter((item) => item.id === finder);
+
+    document.querySelector('#activeTodo').value = finder;
 
     document.querySelector('#todoTitle').value = todo.title;
     document.querySelector('#todoDesc').value = todo.description;
@@ -164,21 +194,62 @@ document.getElementById('saveBtn').onclick = () => {
   const priorityLevel = document.querySelector('#todoPriorities');
   const dueDate = document.querySelector('#datepicker');
 
-  if (document.querySelector('#activeTodo').value) {
-    const todo = new Todo(parseInt(document.querySelector('#activeTodo').value, 10), title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value);
-    updateTodo(todo);
-  } else {
-    const id = JSON.parse(localStorage.getItem('todo-collection')) ? JSON.parse(localStorage.getItem('todo-collection')).length + 1 : 0;
+  const secretKey = document.querySelector('#activeTodo');
+
+  const T = new Date().setHours(0, 0, 0, 0);
+
+  if (secretKey.value) {
     const todo = new Todo(
-      id, title.value, desc.value, dueDate.value, priorityLevel.value, projectName.value,
+      secretKey.value,
+      title.value,
+      desc.value,
+      dueDate.value,
+      priorityLevel.value,
+      projectName.value,
     );
-    saveNewToDo(todo);
+
+    if (!Object.values(todo).every((input) => input.length > 2)) return;
+
+    if ((T.valueOf() !== validFormat(todo.dueDate))
+    && T.valueOf() < validFormat(todo.dueDate) === false) {
+      dueDate.classList.add('is-invalid');
+      dueDate.value = '';
+    } else {
+      if (dueDate.classList.contains('is-invalid')) dueDate.classList.remove('is-invalid');
+      updateTodo(todo);
+      updateTracker(todo);
+      $('#todoModal').modal('hide');
+      document.querySelector('#activeTodo').value = '';
+    }
+  } else {
+    const storageIndex = localStorage.getItem('todo-collection')
+      ? JSON.parse(localStorage.getItem('todo-collection')).length + 1 : 0;
+
+    const uniqueId = `${title.value.split(' ').join('')}${storageIndex}`;
+
+    const todo = new Todo(
+      uniqueId,
+      title.value,
+      desc.value,
+      dueDate.value,
+      priorityLevel.value,
+      projectName.value,
+    );
+
+    if (!Object.values(todo).every((input) => input.length > 2)) return;
+
+    if ((T.valueOf() !== validFormat(todo.dueDate))
+    && T.valueOf() < validFormat(todo.dueDate) === false) {
+      dueDate.classList.add('is-invalid');
+      dueDate.value = '';
+    } else {
+      if (dueDate.classList.contains('is-invalid')) dueDate.classList.remove('is-invalid');
+      saveNewToDo(todo);
+      updateTracker(todo);
+      $('#todoModal').modal('hide');
+      document.querySelector('#activeTodo').value = '';
+    }
   }
-
-  resetFields(title, desc, projectName, priorityLevel, dueDate);
-
-  $('#todoModal').modal('hide');
-  document.querySelector('#activeTodo').value = '';
 };
 
 $('#todoModal').on('hidden.bs.modal', () => {
