@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>ToDo List</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top darkblue">
+        <div class="container-fluid" id="app-name">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarMobile">
+                <div class="navbar-nav">
+                    <a class="nav-link addProject center fs-8 text-white" id="quick-add" href="#todoModal" data-bs-toggle="modal"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row homepage">
+            <section class="sidebar pt-4">
+                <ul class="wrap-sb pt-2 fs-6">
+                    <li class="option center">
+                        <a href="#" id="sidebarToday"><img src='#' id="calendar" alt="calendar icon" class="icons">Today</a>
+                    </li>
+                    <li class="option center">
+                        <a href="#" id="sidebarUpcoming"><img src='#' id="upcoming" alt="schedule icon" class="icons">Upcoming</a>
+                    </li>
+                </ul>
+
+                <div class="accordion accordion-flush mt-3 drop-down" id="accordionFlush">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                              Projects
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
+                            <div class="accordion-body">
+                                <ul class="mb-2 fw-light fs-6" id="menu-items"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="main-page">
+                <div class="mp-header center mt-3 mb-1">
+                    <h3 class="font-custom" id="tabTitle">Default</h3>
+                </div>
+                <div class="mp-body" id="mp-body">
+                    <button class="btn btn-outline-secondary fw-light task" type="button" data-bs-toggle="modal" data-bs-target="#todoModal">
+                      Add task
+                    </button>
+                    <div id="todo-app"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="todoModal" tabindex="-1" role="dialog" aria-labelledby="todoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-custom fw-bold" id="todoModalLabel">Create your to-do list</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row px-3">
+                        <input type="text" class="form-control hidden-input" id="activeTodo" placeholder="e.g., Subscriptions" hidden>
+
+                        <div class="form-floating mb-3 px-0">
+                            <input type="text" class="form-control" id="todoTitle" placeholder="e.g., Subscriptions">
+                            <label class="font-custom fw-normal" for="todoTitle">Title</label>
+                        </div>
+
+                        <div class="form-floating mb-3 col-md px-0 me-1 font-custom">
+                            <select class="form-control font-custom fw-normal" id="todoProjectList">
+                              <option value="Default" selected>Select Project</option>
+                            </select>
+                            <label for="todoProjectList" class="fw-normal">Project</label>
+                        </div>
+
+                        <div class="form-floating mb-3 col-md px-0 font-custom">
+                            <select class="form-control font-custom fw-normal" id="todoPriorities">
+                              <option value="Low" selected>Select Priority</option>
+                              <option>Low</option>
+                              <option>Medium</option>
+                              <option>High</option>
+                            </select>
+                            <label for="todoPriorities" class="fw-normal">Priority</label>
+                        </div>
+
+                        <div class="input-group flex-nowrap mb-3 px-0">
+                            <span class="input-group-text font-custom fw-normal" id="addon-wrapping">Date</span>
+                            <input type="date" class="form-control datepicker" id="datepicker">
+                        </div>
+
+                        <div class="form-floating mb-3 px-0">
+                            <textarea class="form-control desc-td" id="todoDesc" placeholder="e.g., Renew gym membership on May 30th"></textarea>
+                            <label class="font-custom fw-normal" for="todoDesc">Description</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary font-custom fw-normal" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn darkblue text-white font-custom fw-normal" id="saveBtn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
