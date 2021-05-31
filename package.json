@@ -7,11 +7,15 @@
         "test": "jest",
         "build": "webpack",
         "watch": "webpack --watch",
-        "start": "webpack serve --open"
+        "start": "webpack serve --open",
+        "watch-jest": "jest --watch *.js"
     },
     "jest": {
         "transform": {
             "^.+\\.[t|j]sx?$": "babel-jest"
+        },
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/module/projectModule.js"
         }
     },
     "repository": {
@@ -32,6 +36,7 @@
         "eslint": "^7.27.0",
         "eslint-config-airbnb-base": "^14.2.1",
         "eslint-plugin-import": "^2.23.3",
+        "identity-obj-proxy": "^3.0.0",
         "jest": "^27.0.3",
         "style-loader": "^2.0.0",
         "stylelint": "^13.13.1",
