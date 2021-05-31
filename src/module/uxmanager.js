@@ -139,4 +139,6 @@ const uxManager = () => {
   });
 };
 
-export { validFormat, uxManager };
+export {
+  setDate, setActiveTab, validFormat, uxManager,
+};
