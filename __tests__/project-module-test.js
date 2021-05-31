@@ -2,9 +2,10 @@
  * @jest-environment jsdom
  */
 
-import { newProjectButton, createDefaultProject, createProject } from '../src/module/projectModule';
+import { newProjectButton, createDefaultProject, createProject, wrapProject } from '../src/module/projectModule';
 
 describe('project module', () => {
+    const select = document.createElement('select');
     const menuList = document.createElement('ul');
 
     beforeAll(() => {
@@ -12,6 +13,7 @@ describe('project module', () => {
         const newProjectBtn = newProjectButton();
         const newProject = createProject('New Project');
         menuList.append(defaultProject, newProject, newProjectBtn);
+        select.id = 'todoProjectList';
     });
 
     test('creates default project', () => {
@@ -33,5 +35,14 @@ describe('project module', () => {
         expect(newProject.id).toMatch(/pr-new-project/);
     });
 
-
+    test('adds a project to the list of projects', () => {
+        const option = wrapProject('Default');
+        select.appendChild(option);
+        const defaultProject = select.querySelector('option');
+        expect(defaultProject).not.toBeNull();
+        const anotherOption = wrapProject('Second Project');
+        select.appendChild(anotherOption);
+        const projectList = select.querySelectorAll('option');
+        expect(Array.from(projectList).filter((option) => option.innerHTML === 'Second Project')).not.toBeNull();
+    });
 });
