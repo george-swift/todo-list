@@ -117,7 +117,7 @@ const createProject = (project) => {
 
     customAttributes(anchor, attributes.a.created);
     text.textContent = project;
-    text.id = `pr-${project.toLowerCase()}`;
+    text.id = `pr-${project.toLowerCase().replace(' ', '-')}`;
 
     tracker.id = `${project.split(' ').join('-')}`;
 
