@@ -1,30 +1,35 @@
 /**
  * @jest-environment jsdom
- */
+*/
 
 import { validFormat, setDate, setActiveTab } from '../src/module/uxmanager.js';
 
+const setActiveOnClick = jest.fn().mockImplementation((link) => {
+  link.click();
+  setActiveTab(link);
+});
+
 describe('User experience', () => {
-  document.body.innerHTML = `<div class="mp-header center mt-3 mb-1">
+  document.body.innerHTML = `<ul>
+                              <li class="option center">
+                                <a href="#" id="sidebarToday">
+                                <img src='#' id="calendar" alt="calendar icon" class="icons">
+                                  Today
+                                </a>
+                              </li>
+                              <li class="option center">
+                                <a href="#" id="sidebarUpcoming">
+                                <img src='#' id="upcoming" alt="schedule icon" class="icons">
+                                  Upcoming
+                                </a>
+                              </li>
+                            </ul>
+                            <div class="mp-header center mt-3 mb-1">
                               <h3 class="font-custom" id="tabTitle">Default</h3>
                             </div>`;
 
-  const sidebarTabs = document.createElement('ul');
-  sidebarTabs.innerHTML = `<li class="option center">
-                              <a href="#" id="sidebarToday">
-                              <img src='#' id="calendar" alt="calendar icon" class="icons">
-                                Today
-                              </a>
-                            </li>
-                            <li class="option center">
-                              <a href="#" id="sidebarUpcoming">
-                              <img src='#' id="upcoming" alt="schedule icon" class="icons">
-                                Upcoming
-                              </a>
-                            </li>`;
-
-  const today = sidebarTabs.querySelector('#sidebarToday');
-  const upcoming = sidebarTabs.querySelector('#sidebarUpcoming');
+  const today = document.querySelector('#sidebarToday');
+  const upcoming = document.querySelector('#sidebarUpcoming');
 
   describe('Main page', () => {
     it('displays date when ux manager is called', () => {
@@ -43,8 +48,7 @@ describe('User experience', () => {
   describe('Active tab', () => {
     it('adds an active class to tabs on button click', () => {
       expect(today.parentElement.classList).not.toContain('active');
-      today.click();
-      setActiveTab(today);
+      setActiveOnClick(today);
       expect(upcoming.parentElement.classList).not.toContain('active');
       expect(today.parentElement.classList).toContain('active');
     });
@@ -54,8 +58,9 @@ describe('User experience', () => {
     it('ensures correct date format and throws an error otherwise', () => {
       let dueDate = '2021 abcd @#';
       expect(validFormat(dueDate)).toBeNaN();
-      dueDate = '2021 05 31';
-      expect(validFormat(dueDate)).toBe(1622415600000);
+      const today = new Date().toLocaleString().split(',')[0].split('/');
+      dueDate = `${today[2]} ${today[1]} ${today[0]}`;
+      expect(validFormat(dueDate)).toEqual(new Date(dueDate).setHours(0, 0, 0, 0));
     });
   });
 });
