@@ -41,6 +41,8 @@ All tasks and projects are stored in Local Storage.
 - Alternatively, open the index.html file in the `./dist` folder to launch the application in your browser.
 - To terminate the server, enter `Ctrl + C` in your terminal
 
+## Testing
+Run `npm test` to test the Todo List application
 ## Authors
 
 👤 &nbsp; **Ubong George**
